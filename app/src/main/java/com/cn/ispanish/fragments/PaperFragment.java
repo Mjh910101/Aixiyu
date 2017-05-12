@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.cn.ispanish.R;
 import com.cn.ispanish.activitys.PaperActivity;
+import com.cn.ispanish.activitys.PaperGridActivity;
 import com.cn.ispanish.box.Banner;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
@@ -119,7 +120,9 @@ public class PaperFragment extends BaseFragment {
 
     @OnClick(R.id.mainPaper_orderPaperButton)
     public void onOrderPaper(View view) {
-        PassagewayHandler.jumpActivity(context, PaperActivity.class);
+//        PassagewayHandler.jumpActivity(context, PaperActivity.class);
+        PassagewayHandler.jumpActivity(context, PaperGridActivity.class);
+
     }
 
 }
