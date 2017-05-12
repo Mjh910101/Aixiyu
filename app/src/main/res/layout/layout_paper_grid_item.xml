@@ -38,4 +38,11 @@
         android:textColor="@color/blue_text_90"
         android:textSize="20dp" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/ling_gray" />
+
 </LinearLayout>
