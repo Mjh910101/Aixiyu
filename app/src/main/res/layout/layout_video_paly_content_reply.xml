@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="课程评论"
+        android:textColor="@color/black_text_24"
+        android:textSize="16dp" />
+
+    <ListView
+        android:id="@+id/videoPlayContent_reply_dataList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/ling_gray"
+        android:dividerHeight="1px" />
+
+</LinearLayout>

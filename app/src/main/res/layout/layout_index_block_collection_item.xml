@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="5dp">
+
+        <View
+            android:id="@+id/indexBlockCollection_titleIcon"
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/green_green_rounded_3" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/indexBlockCollection_titleIcon"
+            android:background="@color/gray_bg_f7"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/indexBlockCollection_titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="title"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/indexBlockCollection_morenButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/black_next_icon"
+                android:text="MORE"
+                android:textColor="@color/green_text_43"
+                android:textSize="16dp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.cn.ispanish.views.InsideGridView
+        android:id="@+id/indexBlockCollection_dataGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:verticalSpacing="10dp" />
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/paper_4_icon"
+        android:gravity="center"
+        android:text="专四题库"
+        android:textColor="@color/black_text_24"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/paper_8_icon"
+        android:gravity="center"
+        android:text="专八题库"
+        android:textColor="@color/black_text_24"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/paper_dell_icon"
+        android:gravity="center"
+        android:text="DELL题库"
+        android:textColor="@color/black_text_24"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/paper_index_icon"
+        android:gravity="center"
+        android:text="基础练习"
+        android:textColor="@color/black_text_24"
+        android:textSize="16dp" />
+
+
+</LinearLayout>

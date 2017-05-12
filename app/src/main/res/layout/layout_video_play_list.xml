@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg_f7"
+    android:paddingBottom="50dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/videoPlayList_imageBgView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white_00" />
+
+            <RelativeLayout
+                android:id="@+id/videoPlayList_imageLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:id="@+id/videoPlayList_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/loding_icon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/videoPlayList_imageLayout"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/videoPlayList_imageLayout"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/videoPlayList_imageLayout"
+                android:minHeight="50dp">
+
+                <TextView
+                    android:id="@+id/videoPlayList_titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text=" "
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/videoPlayList_teacherText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/videoPlayList_titleText"
+                    android:text=" "
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/videoPlayList_moneyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text=" "
+                    android:textColor="@color/orange_text_f9"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/videoPlayList_sumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="选集"
+                android:textColor="@color/black_text_24"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/videoPlayList_uploadSumText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="更新"
+                android:textColor="@color/gray_text_56"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+        <com.cn.ispanish.views.InsideListView
+            android:id="@+id/videoPlayList_videoDataList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:divider="@color/white_00"
+            android:dividerHeight="5dp" />
+
+        <TextView
+            android:id="@+id/videoPlayList_allVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="right"
+            android:text="更多章节 >"
+            android:textColor="@color/black_text_24"
+            android:textSize="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ling_gray" />
+
+        <LinearLayout
+            android:id="@+id/videoPlayList_contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="简介"
+                android:textColor="@color/black_text_24"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/videoPlayList_contentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text=""
+                android:textColor="@color/gray_text_56"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ling_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="课程评论"
+            android:textColor="@color/black_text_24"
+            android:textSize="17dp" />
+
+        <com.cn.ispanish.views.InsideListView
+            android:id="@+id/videoPlayList_commentsDataList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/ling_gray"
+            android:dividerHeight="1dp" />
+
+    </LinearLayout>
+
+</ScrollView>

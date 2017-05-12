@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/offlineVideo_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/offlineVideo_dataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/offlineVideo_videoPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/loding_icon" />
+
+            <TextView
+                android:id="@+id/offlineVideo_titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/offlineVideo_videoPic"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/offlineVideo_videoPic"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="title"
+                android:textColor="@color/black_text_24"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/offlineVideo_deleteButton"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@color/red_bg"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</HorizontalScrollView>

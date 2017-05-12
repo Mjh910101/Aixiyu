@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg_f7"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/downloaList_dataList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/ling_gray"
+            android:dividerHeight="1px" />
+
+        <TextView
+            android:id="@+id/downloaList_emptyView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="暂时无下载任务"
+            android:textColor="@color/gray_text_56" />
+
+    </RelativeLayout>
+
+</LinearLayout>
