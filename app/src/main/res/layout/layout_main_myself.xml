@@ -201,6 +201,53 @@
                 android:visibility="gone" />
 
             <RelativeLayout
+                android:id="@+id/myself_questionBankButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/myself_questionBankIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/question_bank_icon" />
+
+                <ImageView
+                    android:id="@+id/myself_questionBankNextIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/black_next_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/myself_questionBankNextIcon"
+                    android:layout_toRightOf="@id/myself_questionBankIcon"
+                    android:text="题库"
+                    android:textColor="@color/black_text_24"
+                    android:textSize="15dp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="8dp"
+                android:background="@color/ling_gray"
+                android:visibility="gone" />
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:paddingLeft="8dp"
