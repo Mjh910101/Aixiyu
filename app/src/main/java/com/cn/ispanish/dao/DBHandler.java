@@ -7,7 +7,7 @@ import com.lidroid.xutils.DbUtils.DaoConfig;
 
 public class DBHandler {
 
-    public final static int DB_LEVER = 8;
+    public final static int DB_LEVER = 12;
 
     public static DbUtils getDbUtils(Context context) {
         DaoConfig config = new DaoConfig(context);

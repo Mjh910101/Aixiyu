@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.cn.ispanish.R;
 import com.cn.ispanish.download.DownloadImageLoader;
 import com.cn.ispanish.handlers.PassagewayHandler;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import cn.sharesdk.framework.ShareSDK;
 
@@ -19,6 +20,8 @@ public class MainLodingActivity extends BaseActivity {
 
         initActivity();
         initRun();
+        isCheckLuck = false;
+
     }
 
     private void initActivity() {

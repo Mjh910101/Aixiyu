@@ -88,7 +88,7 @@ public class CollectionListActivity extends BaseActivity {
         indexBlockListAdapter = new IndexBlockListAdapter(context);
         dataList.setAdapter(indexBlockListAdapter);
 
-        initDataForDB();
+//        initDataForDB();
         downloadData();
 
     }
@@ -99,7 +99,7 @@ public class CollectionListActivity extends BaseActivity {
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("key", User.getAppKey(context));
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getCollection(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getCollection(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

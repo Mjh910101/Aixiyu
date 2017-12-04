@@ -9,6 +9,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +25,7 @@ import com.cn.ispanish.box.User;
 import com.cn.ispanish.dialog.ListDialog;
 import com.cn.ispanish.download.DownloadImageLoader;
 import com.cn.ispanish.handlers.DateHandle;
+import com.cn.ispanish.handlers.GetPathFromUriHandler;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
 import com.cn.ispanish.handlers.PassagewayHandler;
@@ -118,6 +121,10 @@ public class UserCenterActivity extends BaseActivity {
         } else {
             switch (requestCode) {
                 case PassagewayHandler.IMAGE_REQUEST_CODE:
+                    if (GetPathFromUriHandler.isKitkat()) {
+                        resizeImage(data);
+                        break;
+                    }
                     if (data != null) {
                         resizeImage(data.getData());
                     }
@@ -225,7 +232,7 @@ public class UserCenterActivity extends BaseActivity {
         params.addBodyParameter("address", TextHandler.getText(cityText));
         params.addBodyParameter("key", User.getAppKey(context));
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getUserInfoset(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getUserInfoset(context), params,
                 new RequestCallBack<String>() {
 
                     @Override
@@ -287,9 +294,25 @@ public class UserCenterActivity extends BaseActivity {
         imageName = PassagewayHandler.takePhoto(context);
     }
 
+    private Uri imageUri;
 
     private void selectImage() {
-        PassagewayHandler.selectImage(context);
+        if (GetPathFromUriHandler.isKitkat()) {
+            File outputImage = new File(DownloadImageLoader.getImagePath(),
+                    "output_image.jpg");
+            imageUri = Uri.fromFile(outputImage);
+            try {
+                if (outputImage.exists()) {
+                    outputImage.delete();
+                }
+                outputImage.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            PassagewayHandler.selectImage(context, imageUri);
+        } else {
+            PassagewayHandler.selectImage(context);
+        }
     }
 
     public List<String> getMsgList() {
@@ -305,7 +328,26 @@ public class UserCenterActivity extends BaseActivity {
     }
 
     private void resizeImage(Uri uri) {
+        MessageHandler.showToast(context, "Old  : " + uri.toString());
         PassagewayHandler.resizeImage(context, uri);
+    }
+
+    private void resizeImage(Intent data) {
+        MessageHandler.showToast(context, "Ki  : " + imageUri.toString());
+        MessageHandler.showToast(context, "Ki in old : " + data.getData());
+
+        Uri newUri = Uri.fromFile(new File(GetPathFromUriHandler.getPath(this, data.getData())));
+        MessageHandler.showToast(context, "Ki in new : " + newUri.toString());
+
+        PassagewayHandler.resizeImage(context, newUri);
+
+//        Intent intent = new Intent("com.android.camera.action.CROP");
+//        //此处注释掉的部分是针对android 4.4路径修改的一个测试
+//        //有兴趣的读者可以自己调试看看
+//        intent.setDataAndType(newUri, "image/*");
+//        intent.putExtra("scale", true);
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//        startActivityForResult(intent, PassagewayHandler.RESULT_REQUEST_CODE);
     }
 
     private File getImageFile() {
@@ -346,7 +388,7 @@ public class UserCenterActivity extends BaseActivity {
         params.addBodyParameter("key", User.getAppKey(context));
         params.addBodyParameter("photo", imageFile);
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getUpportrait(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getUpportrait(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

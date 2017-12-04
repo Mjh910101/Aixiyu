@@ -5,8 +5,6 @@
     android:background="@color/gray_bg_f7"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_title" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
@@ -44,11 +42,18 @@
         android:layout_marginBottom="10dp"
         android:background="@color/ling_gray" />
 
-    <ListView
-        android:id="@+id/offline_dataList"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/ling_gray"
-        android:dividerHeight="1px" />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/offline_dataList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/ling_gray"
+            android:dividerHeight="1px" />
+
+        <include layout="@layout/view_progress" />
+    </RelativeLayout>
 
 </LinearLayout>

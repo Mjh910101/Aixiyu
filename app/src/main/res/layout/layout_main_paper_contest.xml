@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -43,13 +41,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="马上报名"
+                    android:text="参赛奖品"
                     android:textColor="@color/black_text_24"
                     android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/mainPaper_vipButton"
+                android:id="@+id/mainPaper_paimingButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -73,14 +71,15 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/mainPaper_gameButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/mainPaper_orderPaperBg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/mainPaper_contestPaperBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/green_round_bg" />
@@ -88,13 +87,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/mainPaper_orderPaperBg"
-                android:layout_alignLeft="@id/mainPaper_orderPaperBg"
-                android:layout_alignRight="@id/mainPaper_orderPaperBg"
-                android:layout_alignTop="@id/mainPaper_orderPaperBg"
+                android:layout_alignBottom="@id/mainPaper_contestPaperBg"
+                android:layout_alignLeft="@id/mainPaper_contestPaperBg"
+                android:layout_alignRight="@id/mainPaper_contestPaperBg"
+                android:layout_alignTop="@id/mainPaper_contestPaperBg"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="有奖竞猜"
+                android:text="有奖竞赛"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
 
@@ -108,6 +107,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/mainPaper_rankingButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -123,12 +123,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="成绩排名"
+                    android:text="我的成绩"
                     android:textColor="@color/black_text_24"
                     android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/mainPaper_shareButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

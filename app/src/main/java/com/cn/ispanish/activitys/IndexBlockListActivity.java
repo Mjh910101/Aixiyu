@@ -101,7 +101,7 @@ public class IndexBlockListActivity extends BaseActivity {
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("type", id);
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getClasstype(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getClasstype(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

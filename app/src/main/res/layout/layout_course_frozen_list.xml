@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/courseFronzen_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/courseFronzen_allButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="全部课程"
+                android:textColor="@color/gray_text_90"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/courseFronzen_allLine"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_alignLeft="@id/courseFronzen_allButton"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@id/courseFronzen_allButton"
+                android:layout_centerHorizontal="true"
+                android:background="@color/red_text_c7" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/courseFronzen_unFinished"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/courseFronzen_unFinishedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="未完成课程"
+                android:textColor="@color/gray_text_90"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/courseFronzen_unFinishedLine"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_alignLeft="@id/courseFronzen_unFinishedButton"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@id/courseFronzen_unFinishedButton"
+                android:layout_centerHorizontal="true"
+                android:background="@color/red_text_c7" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/courseFronzen_finished"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/courseFronzen_finishedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="已完成课程"
+                android:textColor="@color/gray_text_90"
+                android:textSize="16dp" />
+
+            <View
+                android:id="@+id/courseFronzen_finishedLine"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_alignLeft="@id/courseFronzen_finishedButton"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@id/courseFronzen_finishedButton"
+                android:layout_centerHorizontal="true"
+                android:background="@color/red_text_c7" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/courseFronzen_dataList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:divider="@color/white_00"
+        android:dividerHeight="10dp" />
+
+</LinearLayout>

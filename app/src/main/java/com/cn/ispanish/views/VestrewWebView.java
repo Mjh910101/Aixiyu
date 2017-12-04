@@ -113,13 +113,21 @@ public class VestrewWebView extends WebView {
                 String basisImg = matcher.group();
                 int list;
                 if (basisImg.indexOf(".jpg", 0) >= 0) {
+
                     list = basisImg.indexOf(".jpg") + 4;
+
                 } else if (basisImg.indexOf(".JPG", 0) >= 0) {
+
                     list = basisImg.indexOf(".JPG") + 4;
+
                 } else if (basisImg.indexOf(".PNG", 0) >= 0) {
+
                     list = basisImg.indexOf(".PNG") + 4;
+
                 } else {
+
                     list = basisImg.indexOf(".png") + 4;
+
                 }
                 Log.d("img", basisImg);
                 String url = basisImg.substring(basisImg.indexOf("src=") + 5, list);

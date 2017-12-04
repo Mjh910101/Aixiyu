@@ -122,6 +122,7 @@ public class IndexBlockListAdapter extends BaseAdapter {
         setBlockPic(holder.blockPic, item.getImages());
 
         holder.titleText.setText(item.getName());
+        holder.blockInfoText.setText(item.getDigest());
         holder.priceText.setText(item.getPrice());
 
         holder.originalText.setText(item.getOriginal());
@@ -131,7 +132,7 @@ public class IndexBlockListAdapter extends BaseAdapter {
     private void setBlockPic(ImageView imageView, String images) {
         //250:140
         double w = (double) WinHandler.getWinWidth(context) / 5d * 2d;
-        double h = w / 250d * 140d;
+        double h = w / 232d * 154d;
         imageView.setLayoutParams(new RelativeLayout.LayoutParams((int) w, (int) h));
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
@@ -142,12 +143,14 @@ public class IndexBlockListAdapter extends BaseAdapter {
 
         ImageView blockPic;
         TextView titleText;
+        TextView blockInfoText;
         TextView priceText;
         TextView originalText;
 
         Holder(View view) {
             blockPic = (ImageView) view.findViewById(R.id.indexBlock_blockPic);
             titleText = (TextView) view.findViewById(R.id.indexBlock_blockTitleText);
+            blockInfoText = (TextView) view.findViewById(R.id.indexBlock_blockInfoText);
             priceText = (TextView) view.findViewById(R.id.indexBlock_blockPriceText);
             originalText = (TextView) view.findViewById(R.id.indexBlock_blockOriginalText);
         }

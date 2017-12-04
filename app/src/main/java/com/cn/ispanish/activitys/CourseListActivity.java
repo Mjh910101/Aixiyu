@@ -100,7 +100,7 @@ public class CourseListActivity extends BaseActivity {
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("key", User.getAppKey(context));
 
-        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getMyVedioList(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getMyVedioList(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

@@ -3,7 +3,6 @@ package com.cn.ispanish.activitys;
 import android.Manifest;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -13,11 +12,17 @@ import android.widget.TextView;
 
 import com.cn.ispanish.R;
 import com.cn.ispanish.fragments.IndexFragment;
+import com.cn.ispanish.fragments.LiveListFrangment;
 import com.cn.ispanish.fragments.MyselfFragment;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
+import com.cn.ispanish.fragments.NewPaperFragment;
 import com.cn.ispanish.fragments.OfflineFragment;
 import com.cn.ispanish.fragments.PaperFragment;
+import com.cn.ispanish.handlers.BindingMobileHandler;
 import com.cn.ispanish.handlers.ColorHandle;
 import com.cn.ispanish.handlers.MessageHandler;
+import com.cn.ispanish.handlers.PassagewayHandler;
+import com.cn.ispanish.handlers.UploadHandler;
 import com.cn.ispanish.tools.PermissionsChecker;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -59,6 +64,8 @@ public class MainActivity extends BaseActivity {
     private TextView offlineText;
     @ViewInject(R.id.main_paperText)
     private TextView paperText;
+    @ViewInject(R.id.main_liveText)
+    private TextView liveText;
     @ViewInject(R.id.main_indexIcon)
     private ImageView indexIcon;
     @ViewInject(R.id.main_myselfIcon)
@@ -67,18 +74,27 @@ public class MainActivity extends BaseActivity {
     private ImageView offlineIcon;
     @ViewInject(R.id.main_paperIcon)
     private ImageView paperIcon;
+    @ViewInject(R.id.main_firstOpenBg)
+    private ImageView firstOpenBg;
+    @ViewInject(R.id.main_liveIcon)
+    private ImageView liveIcon;
 
     private FragmentManager fragmentManager;
 
     private IndexFragment indexFragment;
     private MyselfFragment myselfFragment;
     private OfflineFragment offlineFragment;
-    private PaperFragment paperFragment;
+    private NewOldPaperFragment paperFragment;
+    private LiveListFrangment liveFragment;
 
     // 所需的全部权限
     static final String[] PERMISSIONS = new String[]{
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.INTERNET
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,//写入信息
+//            Manifest.permission.INTERNET,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.CAMERA,//拍照
+            Manifest.permission.RECORD_AUDIO,//录音
+//            Manifest.permission.ACCESS_FINE_LOCATION//定位
     };
     private PermissionsChecker mPermissionChecker;
 
@@ -114,6 +130,16 @@ public class MainActivity extends BaseActivity {
                     myselfFragment.uploadData();
                 }
                 break;
+            case VersionActivity.UPLOAD_REQUEST_CODE:
+                if (data != null) {
+                    Bundle b = data.getExtras();
+                    if (b != null) {
+                        if (b.getBoolean("isFinish")) {
+                            finish();
+                        }
+                    }
+                }
+                break;
         }
     }
 
@@ -138,10 +164,30 @@ public class MainActivity extends BaseActivity {
         fragmentManager = getFragmentManager();
         mPermissionChecker = new PermissionsChecker(context);
 
+        BindingMobileHandler.isBindingMobile(context);
+
+        if (!PassagewayHandler.jumpFirstActivity(context)) {
+            firstOpenBg.setVisibility(View.GONE);
+//            chsekLuck();
+        } else {
+            firstOpenBg.setVisibility(View.VISIBLE);
+            isCheckLuck = false;
+        }
+
+//        firstOpenBg.setVisibility(View.VISIBLE);
+
+        UploadHandler.checkUpload(context);
+
         onButton(findViewById(R.id.main_indexButton));
     }
 
-    @OnClick({R.id.main_indexButton, R.id.main_myselfButton, R.id.main_offlineButton, R.id.main_paperButton})
+    @OnClick(R.id.main_firstOpenBg)
+    public void onFirstOpen(View view) {
+        firstOpenBg.setVisibility(View.GONE);
+        chsekLuck();
+    }
+
+    @OnClick({R.id.main_indexButton, R.id.main_myselfButton, R.id.main_offlineButton, R.id.main_paperButton, R.id.main_liveButton})
     public void onButton(View view) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         initButton();
@@ -159,16 +205,31 @@ public class MainActivity extends BaseActivity {
             case R.id.main_paperButton:
                 onPaper(transaction);
                 break;
+            case R.id.main_liveButton:
+                onLive(transaction);
+                break;
         }
         transaction.commit();
     }
 
+    private void onLive(FragmentTransaction transaction) {
+        liveText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
+        liveIcon.setImageResource(R.drawable.live_click_icon);
+
+        if (liveFragment == null) {
+            liveFragment = new LiveListFrangment();
+            transaction.add(R.id.main_contentLayout, liveFragment);
+        } else {
+            transaction.show(liveFragment);
+        }
+    }
+
     private void onPaper(FragmentTransaction transaction) {
-        paperText.setTextColor(ColorHandle.getColorForID(context, R.color.black_text_24));
+        paperText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
         paperIcon.setImageResource(R.drawable.paper_on_icon);
 
         if (paperFragment == null) {
-            paperFragment = new PaperFragment();
+            paperFragment = new NewOldPaperFragment();
             transaction.add(R.id.main_contentLayout, paperFragment);
         } else {
             transaction.show(paperFragment);
@@ -176,7 +237,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void onOffline(FragmentTransaction transaction) {
-        offlineText.setTextColor(ColorHandle.getColorForID(context, R.color.black_text_24));
+        offlineText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
         offlineIcon.setImageResource(R.drawable.offline_on_icon);
 
         if (offlineFragment == null) {
@@ -188,8 +249,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void onMyself(FragmentTransaction transaction) {
-        myselfText.setTextColor(ColorHandle.getColorForID(context, R.color.black_text_24));
-        myselfIcon.setImageResource(R.drawable.uesr_on_icon);
+        myselfText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
+        myselfIcon.setImageResource(R.drawable.user_on_icon);
 
         if (myselfFragment == null) {
             myselfFragment = new MyselfFragment();
@@ -200,7 +261,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void onIndex(FragmentTransaction transaction) {
-        indexText.setTextColor(ColorHandle.getColorForID(context, R.color.black_text_24));
+        indexText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
         indexIcon.setImageResource(R.drawable.home_on_icon);
 
         if (indexFragment == null) {
@@ -212,15 +273,17 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initButton() {
-        indexText.setTextColor(ColorHandle.getColorForID(context, R.color.gray_text_90));
-        myselfText.setTextColor(ColorHandle.getColorForID(context, R.color.gray_text_90));
-        offlineText.setTextColor(ColorHandle.getColorForID(context, R.color.gray_text_90));
-        paperText.setTextColor(ColorHandle.getColorForID(context, R.color.gray_text_90));
+        indexText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
+        myselfText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
+        offlineText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
+        paperText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
+        liveText.setTextColor(ColorHandle.getColorForID(context, R.color.orange_text_buckthorn));
 
         indexIcon.setImageResource(R.drawable.home_off_icon);
         myselfIcon.setImageResource(R.drawable.user_off_icon);
         offlineIcon.setImageResource(R.drawable.offline_off_icon);
         paperIcon.setImageResource(R.drawable.paper_off_icon);
+        liveIcon.setImageResource(R.drawable.live_off_icon);
     }
 
     private void hideFragments(FragmentTransaction transaction) {
@@ -235,6 +298,9 @@ public class MainActivity extends BaseActivity {
         }
         if (paperFragment != null) {
             transaction.hide(paperFragment);
+        }
+        if (liveFragment != null) {
+            transaction.hide(liveFragment);
         }
     }
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainPaper_paperOrdrtLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="6dp"
-    android:background="@color/white">
+    android:background="@color/four_bg">
 
     <View
         android:layout_width="match_parent"
@@ -27,7 +26,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/mainPaper_sprintButton"
+                android:id="@+id/mainPaper_orderSprintButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -43,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="考前冲刺"
+                    android:text="独家资料"
                     android:textColor="@color/black_text_24"
                     android:textSize="14dp" />
             </LinearLayout>
@@ -65,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="VIP保过"
+                    android:text="冲刺课程"
                     android:textColor="@color/black_text_24"
                     android:textSize="14dp" />
             </LinearLayout>
@@ -79,8 +78,8 @@
 
             <ImageView
                 android:id="@+id/mainPaper_orderPaperBg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/blue_round_bg" />
@@ -95,10 +94,9 @@
                 android:layout_alignTop="@id/mainPaper_orderPaperBg"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="顺序练习\n1/999"
+                android:text="顺序练习"
                 android:textColor="@color/white"
                 android:textSize="13dp" />
-
 
         </RelativeLayout>
 
@@ -109,6 +107,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/mainPaper_classificationQusetionButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -130,6 +129,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/mainPaper_myEroorButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -145,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="未做练习"
+                    android:text="我的错题"
                     android:textColor="@color/black_text_24"
                     android:textSize="14dp" />
             </LinearLayout>
@@ -153,6 +153,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/mainPaper_orderPaperIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/four_paper_icon"
+        android:visibility="visible" />
 
 </RelativeLayout>
 

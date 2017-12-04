@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg_f7"
+    android:keepScreenOn="true">
+
+    <RelativeLayout
+        android:id="@+id/liveRoon_videoViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <RelativeLayout
+            android:id="@+id/liveRoon_viewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+
+            <com.easefun.polyvsdk.live.video.PolyvLiveVideoView
+                android:id="@+id/liveRoon_liveVideoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <FrameLayout
+                android:id="@+id/liveRoon_flDanmu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+            <com.cn.ispanish.live.PolyvPlayerLightView
+                android:id="@+id/liveRoon_playerLightView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+           <!-- <com.cn.ispanish.live.PolyvPlayerVolumeView
+                android:id="@+id/liveRoon_playerVolumeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />-->
+
+            <com.cn.ispanish.live.PolyvPlayerMediaController
+                android:id="@+id/liveRoon_playerMediaController"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <!-- 视频在加载过程中显示的进度条 -->
+            <ProgressBar
+                android:id="@+id/liveRoon_loadingProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+            <com.easefun.polyvsdk.live.video.auxiliary.PolyvLiveAuxiliaryVideoView
+                android:id="@+id/liveRoon_liveAuxiliaryVideoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/black" />
+
+            <!-- 广告片头在加载过程中显示的进度条 -->
+            <ProgressBar
+                android:id="@+id/liveRoon_auxiliaryLoadingProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true" />
+
+
+            <TextView
+                android:id="@+id/liveRoon_countDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="广告也精彩：%d秒"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/liveRoon_noStream"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <com.cn.ispanish.video.VideoViewContainer
+            android:id="@+id/liveRoon_videoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.easefun.polyvsdk.ijk.IjkVideoView
+                android:id="@+id/liveRoon_videoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" />
+
+
+            <ImageView
+                android:id="@+id/liveRoon_videoIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/video_logo_icon" />
+
+
+            <com.cn.ispanish.views.ScrollingTextView
+                android:id="@+id/liveRoon_runText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/liveRoon_videoIcon"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="欢迎来到爱西语网校，欢迎来到爱西语网校，欢迎来到爱西语网校，欢迎来到爱西语网校"
+                android:textColor="@color/red_text_c7"
+                android:textSize="14dp"
+                android:visibility="gone" />
+
+
+            <master.flame.danmaku.ui.widget.DanmakuView
+                android:id="@+id/liveRoon_danmaku"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.cn.ispanish.video.VideoViewContainer>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/liveRoon_contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/liveRoon_videoViewLayout">
+
+        <include layout="@layout/layout_live_room_content" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/view_progress" />
+
+</RelativeLayout>

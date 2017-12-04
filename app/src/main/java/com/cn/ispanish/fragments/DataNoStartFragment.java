@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cn.ispanish.R;
-import com.cn.ispanish.activitys.PlayOrderActivity;
+import com.cn.ispanish.activitys.play.PlayOrderActivity;
 import com.cn.ispanish.box.IndexBlock;
 import com.cn.ispanish.box.Teacher;
 import com.cn.ispanish.box.User;
@@ -167,7 +167,7 @@ public class DataNoStartFragment extends BaseFragment {
         }
         if (User.isLoginAndShowMessage(context)) {
             Bundle b = new Bundle();
-            b.putString(PlayOrderActivity.TOPUP_BLOCK, block.getCourseid());
+            b.putString(PlayOrderActivity.TOPUP_ID, block.getCourseid());
             b.putString(PlayOrderActivity.TOPUP_TITLE, block.getName());
             b.putString(PlayOrderActivity.TOPUP_MONEY, block.getPrice());
 

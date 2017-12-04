@@ -119,7 +119,7 @@ public class IndexBlockGirdAdapter extends BaseAdapter {
     private void setBlockPic(ImageView imageView, String images) {
         //250:140
         double w = ((double) WinHandler.getWinWidth(context) - (double) WinHandler.dipToPx(context, 30)) / 2d;
-        double h = w / 250d * 140d;
+        double h = w / 232d * 154d;
         imageView.setLayoutParams(new RelativeLayout.LayoutParams((int) w, (int) h));
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 

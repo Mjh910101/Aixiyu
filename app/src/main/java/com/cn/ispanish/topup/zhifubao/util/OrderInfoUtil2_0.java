@@ -21,6 +21,12 @@ import mlxy.utils.S;
 
 public class OrderInfoUtil2_0 {
 
+    public final static String Course_Notify_Url = "http://www.ispanish.cn/index.php/Home/Api/alipayclass.html";
+    public final static String Course_Balance_Notify_Url = "http://www.ispanish.cn/index.php/Home/Api/alipayclassbalance.html";
+    public final static String Paper_Notify_Url = "http://www.ispanish.cn/index.php/Home/Api/bankalipayback.html";
+    public final static String Min_Class_Notify_Url = "http://www.ispanish.cn/index.php/Home/Api/alipayminiclassback.html";
+    public final static String Gift_Notify_Url = "http://www.ispanish.cn/index.php/Home/Api/alipaygiftback.html";
+
     /**
      * 构造授权参数列表
      *
@@ -62,6 +68,8 @@ public class OrderInfoUtil2_0 {
         // 签名类型
         keyValues.put("sign_type", rsa2 ? "RSA2" : "RSA");
 
+//        keyValues.put("hb_fq_param", "{\"hb_fq_num\":\"3\",\"hb_fq_seller_percent\":\"1.80\"}");
+
         return keyValues;
     }
 
@@ -72,12 +80,18 @@ public class OrderInfoUtil2_0 {
      * @param rsa2
      * @return
      */
-    public static Map<String, String> buildOrderParamMap(String app_id, boolean rsa2, String title, String price, String orderId) {
+    public static Map<String, String> buildOrderParamMap(String app_id, boolean rsa2, String title, String price, String orderId, String notifyUrl) {
         Map<String, String> keyValues = new HashMap<String, String>();
 
         keyValues.put("app_id", app_id);
 
-        keyValues.put("biz_content", "{\"timeout_express\":\"30m\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":\"" + price + "\",\"subject\":\"" + title + "\",\"body\":\"" + title + "\",\"out_trade_no\":\"" + orderId + "\"}");
+        keyValues.put("biz_content",
+                "{\"timeout_express\":\"30m\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":\"" + price
+                        + "\",\"subject\":\"" + title + "\",\"body\":\"" + title + "\",\"out_trade_no\":\"" + orderId + "\"}");
+//                        + "\",\"extend_params\":{\"hb_fq_num\":\"3\",\"hb_fq_seller_percent\":\"100\"}}");
+//                +"\"hb_fq_param\":\"{\\\"hb_fq_num\\\":\\\"3\\\",\\\"hb_fq_seller_percent\\\":\\\"1.80\\\"}\""
+//                +"\"extend_params\":\"{\\\"hb_fq_num\\\":\\\"3\\\",\\\"hb_fq_seller_percent\\\":\\\"1.80\\\"}\""
+
 
         keyValues.put("charset", "utf-8");
 
@@ -89,7 +103,16 @@ public class OrderInfoUtil2_0 {
 
         keyValues.put("version", "1.0");
 
-        keyValues.put("notify_url", "http://www.ispanish.cn/index.php/Home/Api/alipayclass.html");
+        keyValues.put("notify_url", notifyUrl);
+
+        keyValues.put("enable_pay_channels", "balance,moneyFund,pcredit,pcreditpayInstallment,bankPay,debitCardExpress");
+
+//        keyValues.put("hb_fq_param", "{\"hb_fq_num\":\"3\",\"hb_fq_seller_percent\":\"100\"}");
+//        keyValues.put("extend_params", "{\"sys_service_provider_id\":\""+orderId+"\"}");
+//        keyValues.put("extend_params", "{\"hb_fq_num\":\"3\",\"hb_fq_seller_percent\":\"0\",\"needBuyerRealnamed\":\"T\",\"sys_service_provider_id\":\"2088511833207846\"}");
+//        keyValues.put("extend_params", "{\"hb_fq_num\":\"3\",\"hb_fq_seller_percent\":\"0\",\"needBuyerRealnamed\":\"T\"}");
+
+        keyValues.put("goods_type", "1");
 
         return keyValues;
     }

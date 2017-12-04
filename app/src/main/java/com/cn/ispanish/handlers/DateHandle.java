@@ -19,8 +19,12 @@ public class DateHandle {
     }
 
     public static String getTimeString(Date date, String type) {
-        SimpleDateFormat dateformat = new SimpleDateFormat(type);
-        return dateformat.format(date);
+        try {
+            SimpleDateFormat dateformat = new SimpleDateFormat(type);
+            return dateformat.format(date);
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     public static String format(long time, String type) {
@@ -81,4 +85,18 @@ public class DateHandle {
                 && getDay(c1) == getDay(c2);
     }
 
+    public static long[] getTime(long time) {
+        long[] times = new long[4];
+        long mday = time / (60 * 60 * 24);
+        long mhour = (time - mday * (60 * 60 * 24)) / (60 * 60);
+        long mmin = (time - mday * (60 * 60 * 24) - mhour * (60 * 60)) / 60;
+        long msecond = (time - mday * (60 * 60 * 24) - mhour * (60 * 60) - mmin * (60));
+
+        times[0] = mday;
+        times[1] = mhour;
+        times[2] = mmin;
+        times[3] = msecond;
+
+        return times;
+    }
 }

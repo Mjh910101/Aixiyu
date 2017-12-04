@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/gray_bg_f7"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.cn.ispanish.views.paper.v2.views.PaperTypeView
+                android:id="@+id/paperJudgemt_typeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.cn.ispanish.views.paper.v2.views.PaperTitleView
+                android:id="@+id/paperJudgemt_titleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/view_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.cn.ispanish.views.paper.v2.views.PaperJudgmentView
+                android:id="@+id/paperJudgemt_judgmentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.cn.ispanish.views.paper.v2.views.PaperExplainView
+                android:id="@+id/paperJudgemt_explainView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

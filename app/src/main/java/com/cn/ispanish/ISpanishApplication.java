@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.support.multidex.MultiDex;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -12,6 +13,8 @@ import com.cn.ispanish.download.DownloadImageLoader;
 import com.cn.ispanish.services.PolyvService;
 import com.easefun.polyvsdk.PolyvDevMountInfo;
 import com.easefun.polyvsdk.PolyvSDKClient;
+import com.easefun.polyvsdk.live.PolyvLiveSDKClient;
+import com.easefun.polyvsdk.live.chat.PolyvChatManager;
 import com.easefun.polyvsdk.server.AndroidService;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -21,6 +24,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
@@ -54,6 +58,13 @@ public class ISpanishApplication extends Application {
     private static final String TAG = ISpanishApplication.class.getSimpleName();
 
     /**
+     * 登录聊天室/ppt直播所需，请填写自己的appId和appSecret，否则无法登陆
+     * appId和appSecret在直播系统管理后台的用户信息页的API设置中用获取
+     */
+    private static final String appId = "ejpuk6blpp";
+    private static final String appSecret = "4b08390f30dc47e5ad1cc60f78eeb9bc";
+
+    /**
      * 加密秘钥
      */
     private String aeskey = "VXtlHmwfS2oYm0CZ";
@@ -77,7 +88,27 @@ public class ISpanishApplication extends Application {
         MobclickAgent.setCatchUncaughtExceptions(true);//友盟
         JPushInterface.setDebugMode(true);//JPush
         JPushInterface.init(this);
+//        initPolyvCilent();
+
+        MultiDex.install(this);
+
+        CrashReport.initCrashReport(getApplicationContext(), "dfdb8a573c", true);
+
+        // 创建默认的ImageLoader配置参数
+        ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
+        // Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(configuration);
         initPolyvCilent();
+        initPolyvChatConfig();
+    }
+
+    /**
+     * 初始化聊天室配置
+     */
+    public void initPolyvChatConfig() {
+        PolyvChatManager.initConfig(appId, appSecret);
+
+        PolyvLiveSDKClient client = PolyvLiveSDKClient.getInstance();
     }
 
     public void initPolyvCilent() {
@@ -167,6 +198,13 @@ public class ISpanishApplication extends Application {
             String msg = intent.getStringExtra("msg");
             Log.e(TAG, msg);
         }
+    }
+
+    public static String getLiveAppId() {
+        return appId;
+    }
+    public static String getLiveAppSecret() {
+        return appSecret;
     }
 
 }

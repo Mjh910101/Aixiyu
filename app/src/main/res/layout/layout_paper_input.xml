@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/paper_inputViewLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:paddingTop="5dp"
+    android:visibility="gone">
+
+    <EditText
+        android:id="@+id/paper_inputView_dataInput"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/black_whilt_rounded_5"
+        android:gravity="left|top"
+        android:hint="请输入答案..."
+        android:padding="5dp"
+        android:textSize="13dp" />
+
+    <RelativeLayout
+        android:id="@+id/paper_inputView_checkLayout"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginTop="3dp">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/paper_inputView_checkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/blue_blue_rounded_5"
+            android:paddingBottom="8dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:paddingTop="8dp"
+            android:text="提交答案"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

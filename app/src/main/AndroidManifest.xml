@@ -26,6 +26,7 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <!-- 属于android6.0运行时权限，android6.0在使用时，需要再次请求以下权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -115,7 +116,7 @@
             android:name=".activitys.OfflineVideoPlayActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activitys.PlayOrderActivity"
+            android:name=".activitys.play.PlayOrderActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.VideoDataListActivity"
@@ -135,7 +136,183 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activitys.PaperActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".activitys.PaperGridActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ClassificationQusetionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.QuestionBankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForTypeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".activitys.CollectionPaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.CompetitionRankingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.GameContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForVipListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForVipContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.play.PlayPaperOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForErrorActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".activitys.ShareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Transparent" />
+        <activity
+            android:name=".activitys.GamePaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.MyselfRankingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.VipBlocktoListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ImageListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ClassificationQusetionGridActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForErrorBankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForErrorInTypeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".activitys.PaperForShowExplainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".activitys.ForgetActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.BindingMobileActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.CourseFrozenListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.OffLineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.play.PayCouponListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.GameResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.FirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.GameCheckPaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.SharePaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.VersionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Transparent" />
+        <activity
+            android:name=".activitys.LuckMessagActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Transparent" />
+        <activity
+            android:name=".activitys.OneByOneContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.MinClassContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.play.PlayMinClassActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.play.PlayLiveGiftActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ClassificationQusetionGridV2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.MyselfPaperForVipListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.HiddenSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ChannelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperGridOldActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.CollectionPaperQuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.PaperForQuestionErrorInTypeActivity"
+            android:screenOrientation="portrait" />
+
+        <!--直播-->
+        <activity
+            android:name=".activitys.LiveRoomActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="PlayerActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".live.LiveTestActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/PlayerTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="PlayerActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.cn.ispanish.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- 服务 -->
+        <service android:name=".download.DownloadNewAppService" />
 
         <!--支付宝-->
         <activity
@@ -210,30 +387,36 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="58c7a2c999f0c7124e000f21" />
-        <!--<meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="huawei" />-->
-        <!-- <meta-data
-             android:name="UMENG_CHANNEL"
-             android:value="qq" />-->
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="debug" />
         <!--<meta-data
             android:name="UMENG_CHANNEL"
-            android:value="baidu" />-->
+            android:value="app" />-->
+        <!--<meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="mei" />-->
+         <!--<meta-data
+             android:name="UMENG_CHANNEL"
+             android:value="huawei" />-->
+          <!--<meta-data
+              android:name="UMENG_CHANNEL"
+              android:value="qq" />-->
+         <!--<meta-data
+             android:name="UMENG_CHANNEL"
+             android:value="baidu" />-->
         <!--<meta-data
             android:name="UMENG_CHANNEL"
             android:value="oppo" />-->
         <!--<meta-data
            android:name="UMENG_CHANNEL"
            android:value="mi" />-->
-        <!--<meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="360" />-->
-        <!--<meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="wandou" />-->
+         <!--<meta-data
+             android:name="UMENG_CHANNEL"
+             android:value="360" />-->
+        <!-- <meta-data
+             android:name="UMENG_CHANNEL"
+             android:value="wandou" />-->
 
         <!--JPush-->
         <!-- Required SDK 核心功能-->

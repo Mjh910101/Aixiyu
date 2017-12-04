@@ -284,7 +284,6 @@ public class MediaController extends IjkBaseMediaController {
     }
 
     public void setCollection( boolean b) {
-
         if (b) {
             collection.setImageResource(R.drawable.video_collection_on_icon);
         } else {

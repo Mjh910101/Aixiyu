@@ -12,7 +12,9 @@ import com.cn.ispanish.box.User;
 import com.cn.ispanish.box.VideoInfo;
 import com.cn.ispanish.dialog.ListDialog;
 import com.cn.ispanish.download.DownloadImageLoader;
+import com.cn.ispanish.handlers.MessageHandler;
 import com.cn.ispanish.handlers.PassagewayHandler;
+import com.cn.ispanish.handlers.SystemHandle;
 import com.cn.ispanish.views.SwitchView;
 import com.easefun.polyvsdk.BitRateEnum;
 import com.lidroid.xutils.ViewUtils;
@@ -50,6 +52,8 @@ public class SetingActivity extends BaseActivity {
     private SwitchView swithButton;
     @ViewInject(R.id.view_progress)
     private ProgressBar progress;
+    @ViewInject(R.id.setting_versionText)
+    private TextView versionText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,33 @@ public class SetingActivity extends BaseActivity {
     @OnClick(R.id.setting_aboutButton)
     public void onAbout(View view) {
         PassagewayHandler.jumpActivity(context, AboutUsActivity.class);
+    }
+
+    private final static long interval = 2000;
+    private long firstTime = 0;
+    private int onVersionCount = 0;
+
+    @OnClick(R.id.setting_versionText)
+    public void onVersion(View view) {
+        long secondTime = System.currentTimeMillis();
+        if (secondTime - firstTime <= interval) {
+            onVersionCount += 1;
+            if (onVersionCount >= 5) {
+                PassagewayHandler.jumpActivity(context, HiddenSettingActivity.class);
+//                boolean b = SystemHandle.isFlagSecure(context);
+//                SystemHandle.saveIsFlagSecure(context, !b);
+//                if (b) {
+//                    MessageHandler.showToast(context, "可截图模式开启~");
+//                } else {
+//                    MessageHandler.showToast(context, "可截图模式关闭~");
+//
+//                }
+                onVersionCount = 0;
+            }
+        } else {
+            onVersionCount = 0;
+        }
+        firstTime = secondTime;
     }
 
     @OnClick(R.id.setting_clearButton)
@@ -112,6 +143,7 @@ public class SetingActivity extends BaseActivity {
 
     private void initActivity() {
         titleText.setText("设置");
+        versionText.setText(SystemHandle.getVersion(context));
         setBitRateText();
         initSwith();
     }

@@ -178,6 +178,17 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/setting_versionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="text"
+            android:textColor="@color/gray_text_66"
+            android:textSize="14dp" />
+
         <include layout="@layout/view_progress" />
 
     </RelativeLayout>

@@ -155,7 +155,7 @@ public class RegisterActivity extends BaseActivity {
         params.addBodyParameter("yzma", code);
         params.addBodyParameter("zctype", "手机号");
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getRegister(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getRegister(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

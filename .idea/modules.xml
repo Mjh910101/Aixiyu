@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Aixiyu.iml" filepath="$PROJECT_DIR$/Aixiyu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/App.iml" filepath="$PROJECT_DIR$/app/App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polyvAndroidSDKGif1.0/polyvAndroidSDKGif1.0.iml" filepath="$PROJECT_DIR$/polyvAndroidSDKGif1.0/polyvAndroidSDKGif1.0.iml" />
     </modules>
   </component>
 </project>

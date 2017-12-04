@@ -108,7 +108,6 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
     private VideoViewContainer videoLayout;
     @ViewInject(R.id.videoPlayContent_danmaku)
     private IDanmakuView mDanmakuView;
-
     @ViewInject(R.id.videoPlayContent_dataText)
     private TextView dataText;
     @ViewInject(R.id.videoPlayContent_dataLine)
@@ -121,17 +120,18 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
     private TextView replyText;
     @ViewInject(R.id.videoPlayContent_replyLine)
     private View replyLine;
-
     @ViewInject(R.id.videoPlayContent_collectionButton)
     private ImageView collectionButton;
     @ViewInject(R.id.videoPlayContent_buyButton)
     private ImageView buyButton;
+    @ViewInject(R.id.videoPlayContent_runText)
+    private TextView runText;
 
     private String vid, courseId, title;
 
     private int fastForwardPos = 0;
 
-    private boolean startNow = true, isOffline = false;
+    private boolean startNow = true, isOffline = false, isCollic = false;
     boolean isBuy;
 
     int w = 0, h = 0, adjusted_h = 0;
@@ -190,6 +190,13 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        dataFragment = null;
+        downloadData(courseId);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         try {
@@ -214,7 +221,7 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
     private void initActivity(Bundle b) {
 
         initButton();
-
+        runText.setText(getRunText());
         title = b.getString(TITLE_KEY);
         vid = b.getString(VID_KEY, "");
         courseId = b.getString(COURSE_ID_KEY);
@@ -633,12 +640,14 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    if (isCollic(block)) {
-                        DBHandler.getDbUtils(context).deleteById(IndexBlock.class, block.getCourseid());
+                    if (isCollic) {
+//                        DBHandler.getDbUtils(context).deleteById(IndexBlock.class, block.getCourseid());
+                        deleteCollic(block);
                     } else {
-                        DBHandler.getDbUtils(context).saveOrUpdate(block);
+//                        DBHandler.getDbUtils(context).saveOrUpdate(block);
+                        collic(block);
                     }
-                    initCollic(block);
+//                    initCollic(block);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -735,7 +744,7 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
         params.addBodyParameter("sid", id);
         params.addBodyParameter("key", User.getAppKey(context));
 
-        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getVideoPlay(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getVideoPlay(context), params,
                 new RequestCallBack<String>() {
 
                     @Override
@@ -754,6 +763,7 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
                         if (json != null) {
 
                             isBuy = JsonHandle.getString(json, "buy").equals("YES");
+                            isCollic = JsonHandle.getString(json, "collect").equals("1");
 
                             initBlock(JsonHandle.getJSON(json, "sp"));
                             initTeasher(JsonHandle.getJSON(json, "teacher"));
@@ -773,7 +783,7 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
         } else {
             buyButton.setImageResource(R.drawable.bug_gray_icon);
         }
-        initCollic(block);
+        initCollic();
     }
 
     private void initVideoList(JSONArray array, boolean isBuy) {
@@ -816,17 +826,17 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
         block = new IndexBlock(json);
     }
 
-    private boolean isCollic(IndexBlock block) {
-        try {
-            DBHandler.getDbUtils(context).createTableIfNotExist(IndexBlock.class);
-            IndexBlock obj = DBHandler.getDbUtils(context).findById(IndexBlock.class, block.getCourseid());
-//            MessageHandler.showToast(context, obj.getCourseid());
-            return obj != null;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    private boolean isCollic(IndexBlock block) {
+//        try {
+//            DBHandler.getDbUtils(context).createTableIfNotExist(IndexBlock.class);
+//            IndexBlock obj = DBHandler.getDbUtils(context).findById(IndexBlock.class, block.getCourseid());
+////            MessageHandler.showToast(context, obj.getCourseid());
+//            return obj != null;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
     @OnClick(R.id.videoPlayContent_downloadButton)
     public void onDownload(View view) {
@@ -845,25 +855,93 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
     @OnClick(R.id.videoPlayContent_collectionButton)
     public void onCollic(View view) {
         try {
-            if (isCollic(block)) {
-                DBHandler.getDbUtils(context).deleteById(IndexBlock.class, block.getCourseid());
+            if (isCollic) {
+//                DBHandler.getDbUtils(context).deleteById(IndexBlock.class, block.getCourseid());
+                deleteCollic(block);
             } else {
-                DBHandler.getDbUtils(context).saveOrUpdate(block);
+//                DBHandler.getDbUtils(context).saveOrUpdate(block);
+                collic(block);
             }
-            initCollic(block);
+//            initCollic(block);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void initCollic(IndexBlock block) {
+    private void deleteCollic(IndexBlock block) {
+        progress.setVisibility(View.VISIBLE);
+
+        RequestParams params = HttpUtilsBox.getRequestParams();
+        params.addBodyParameter("cid", block.getCourseid());
+        params.addBodyParameter("key", User.getAppKey(context));
+
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getCleanCollect(context), params,
+                new RequestCallBack<String>() {
+
+                    @Override
+                    public void onFailure(HttpException exception,
+                                          String msg) {
+                        progress.setVisibility(View.GONE);
+                        MessageHandler.showFailure(context);
+                    }
+
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        Log.d("", result);
+
+                        JSONObject json = JsonHandle.getJSON(result);
+                        if (json != null) {
+                            isCollic = false;
+                            initCollic();
+                        }
+                        progress.setVisibility(View.GONE);
+                    }
+                });
+    }
+
+    private void collic(IndexBlock block) {
+        progress.setVisibility(View.VISIBLE);
+
+        RequestParams params = HttpUtilsBox.getRequestParams();
+        params.addBodyParameter("cid", block.getCourseid());
+        params.addBodyParameter("key", User.getAppKey(context));
+
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getCollectVideo(context), params,
+                new RequestCallBack<String>() {
+
+                    @Override
+                    public void onFailure(HttpException exception,
+                                          String msg) {
+                        progress.setVisibility(View.GONE);
+                        MessageHandler.showFailure(context);
+                    }
+
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        Log.d("", result);
+
+                        JSONObject json = JsonHandle.getJSON(result);
+//                        if (json != null) {
+                        isCollic = true;
+                        initCollic();
+//                        }
+                        progress.setVisibility(View.GONE);
+                    }
+                });
+    }
+
+    private void initCollic() {
+//    private void initCollic(IndexBlock block) {
 //        if (isCollic(block)) {
 //            collectionButton.setImageResource(R.drawable.star_red_icon);
 //        } else {
 //            collectionButton.setImageResource(R.drawable.star_gray_icon);
 //        }
         if (mediaController != null) {
-            mediaController.setCollection(isCollic(block));
+//            mediaController.setCollection(isCollic(block));
+            mediaController.setCollection(isCollic);
         }
     }
 
@@ -1097,6 +1175,7 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
             transaction.hide(dataFragment);
         }
         if (replyFragment != null) {
+            replyFragment.closeInput();
             transaction.hide(replyFragment);
         }
         if (videoListFragment != null) {
@@ -1105,4 +1184,12 @@ public class VideoPlayContentNoStartActivity extends BaseActivity {
     }
 
 
+    public String getRunText() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        return sb.toString();
+    }
 }

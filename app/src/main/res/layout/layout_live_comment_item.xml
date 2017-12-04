@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/liveCommentItem_userPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/liveCommentItem_userPic"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/liveCommentItem_commentIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/live_comment" />
+
+                <TextView
+                    android:id="@+id/liveCommentItem_goodText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/liveCommentItem_commentIcon"
+                    android:text="100"
+                    android:textColor="@color/black_text_24"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/liveCommentItem_goodIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_toLeftOf="@id/liveCommentItem_goodText"
+                    android:src="@drawable/live_good_0" />
+
+                <TextView
+                    android:id="@+id/liveCommentItem_userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/liveCommentItem_goodIcon"
+                    android:textColor="@color/black_text_24"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/liveCommentItem_uploadTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/gray_text_90"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/liveCommentItem_conntntText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/gray_text_56"
+                android:textSize="13dp" />
+
+            <com.cn.ispanish.views.InsideListView
+                android:id="@+id/liveCommentItem_conntntList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_smoke"
+                android:divider="@color/white_00"
+                android:dividerHeight="0dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

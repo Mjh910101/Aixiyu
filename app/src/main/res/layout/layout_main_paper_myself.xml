@@ -9,16 +9,7 @@
     android:paddingTop="10dp">
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/paper_error_icon"
-        android:gravity="center"
-        android:text="我的错题"
-        android:textColor="@color/black_text_24"
-        android:textSize="16dp" />
-
-    <TextView
+        android:id="@+id/mainPaper_collectionButton"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -36,7 +27,21 @@
         android:gravity="center"
         android:text="练习历史"
         android:textColor="@color/black_text_24"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/mainPaper_eroorButton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/paper_error_icon"
+        android:gravity="center"
+        android:text="我的错题"
+        android:textColor="@color/black_text_24"
+        android:textSize="16dp"
+        android:visibility="invisible" />
+
 
     <View
         android:layout_width="0dp"

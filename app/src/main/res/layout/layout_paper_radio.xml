@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.cn.ispanish.views.InsideListView
+        android:id="@+id/paperRadio_answerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/white_00"
+        android:dividerHeight="1dp" />
+
+    <RelativeLayout
+        android:id="@+id/paperRadio_checkLayout"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginTop="3dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/paperRadio_checkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/blue_blue_rounded_5"
+            android:paddingBottom="8dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:paddingTop="8dp"
+            android:text="查看解析"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+    </RelativeLayout>
+</LinearLayout>
+

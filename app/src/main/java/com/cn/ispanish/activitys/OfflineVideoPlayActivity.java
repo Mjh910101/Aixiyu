@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.cn.ispanish.R;
 import com.cn.ispanish.box.IndexBlock;
 import com.cn.ispanish.box.Teacher;
+import com.cn.ispanish.box.User;
 import com.cn.ispanish.box.VideoDownloadInfo;
 import com.cn.ispanish.box.VideoInfo;
 import com.cn.ispanish.dao.DBHandler;
@@ -95,6 +96,8 @@ public class OfflineVideoPlayActivity extends BaseActivity {
     private ImageView collicIcon;
     @ViewInject(R.id.videoPlay_buttonLayout)
     private RelativeLayout buttonLayout;
+    @ViewInject(R.id.videoPlay_runText)
+    private TextView runText;
 
     private String vid, courseId, title;
 
@@ -126,7 +129,7 @@ public class OfflineVideoPlayActivity extends BaseActivity {
             finish();
             return;
         }
-
+        runText.setText(getRunText());
         title = b.getString(TITLE_KEY);
         vid = b.getString(VID_KEY);
         courseId = b.getString(COURSE_ID_KEY);
@@ -584,5 +587,14 @@ public class OfflineVideoPlayActivity extends BaseActivity {
             builder.show();
         }
     };
+
+    public String getRunText() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        sb.append("【id:" + User.getUserId(context) + "】                                                         ");
+        return sb.toString();
+    }
 
 }

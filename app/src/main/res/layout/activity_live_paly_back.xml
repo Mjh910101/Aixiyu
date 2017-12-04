@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg_f7"
+    android:keepScreenOn="true">
+
+    <com.cn.ispanish.video.VideoViewContainer
+        android:id="@+id/livePlayBack_videoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <com.easefun.polyvsdk.ijk.IjkVideoView
+            android:id="@+id/livePlayBack_videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+
+        <ImageView
+            android:id="@+id/livePlayBack_videoIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/video_logo_icon" />
+
+
+        <com.cn.ispanish.views.ScrollingTextView
+            android:id="@+id/livePlayBack_runText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/livePlayBack_videoIcon"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="欢迎来到爱西语网校，欢迎来到爱西语网校，欢迎来到爱西语网校，欢迎来到爱西语网校"
+            android:textColor="@color/red_text_c7"
+            android:textSize="14dp" />
+
+
+        <master.flame.danmaku.ui.widget.DanmakuView
+            android:id="@+id/livePlayBack_danmaku"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.cn.ispanish.video.VideoViewContainer>
+
+    <RelativeLayout
+        android:id="@+id/liveRoon_contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/livePlayBack_videoLayout">
+
+        <include layout="@layout/layout_live_room_content" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/view_progress" />
+
+</RelativeLayout>

@@ -88,7 +88,9 @@ public class BannerView extends LinearLayout {
         }
 
         double w = WinHandler.getWinWidth(context);
-        double h = w / 530d * 260d;
+//        double h = w / 530d * 260d;
+        double h = w / 108d * 35d;
+
         for (int i = 0; i < list.size(); i++) {
             ImageView image = new ImageView(context);
             image.setLayoutParams(new LinearLayout.LayoutParams((int) w, (int) h));
@@ -190,10 +192,14 @@ public class BannerView extends LinearLayout {
     }
 
     private void onClickPPT(Banner banner) {
+        if (banner.getValue().equals("")) {
+            return;
+        }
         Bundle b = new Bundle();
+//        b.putString(MyWebViewClient.KEY, "http://p.qiao.baidu.com/im/index?siteid=10642244&ucid=6290486&cp=&cr=&cw=");
         b.putString(MyWebViewClient.KEY, banner.getValue());
         b.putString(MyWebViewClient.TITLE, banner.getTitle());
-        PassagewayHandler.jumpActivity(context,WebContentActivity.class, b);
+        PassagewayHandler.jumpActivity(context, WebContentActivity.class, b);
     }
 
     private Handler handler = new Handler() {

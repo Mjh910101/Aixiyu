@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg_f7">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/paper_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/orange_text_ff"
+        android:padding="5dp"
+        android:paddingRight="50dp" />
+
+    <TextView
+        android:id="@+id/paper_setChannelButton"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@id/paper_titleLayout"
+        android:layout_alignRight="@id/paper_titleLayout"
+        android:layout_alignTop="@id/paper_titleLayout"
+        android:gravity="center"
+        android:text="十"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/paper_titleTypeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/paper_titleLayout"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:padding="5dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/paper_titleTypeLayout"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_main_paper_new_order" />
+
+            <include layout="@layout/layout_main_paper_contest" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/view_progress" />
+
+</RelativeLayout>

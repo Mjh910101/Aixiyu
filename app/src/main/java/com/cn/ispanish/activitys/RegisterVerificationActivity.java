@@ -213,7 +213,7 @@ public class RegisterVerificationActivity extends BaseActivity {
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("to", TextHandler.getText(mobileInput));
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getSendNote(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getSendNote(context), params,
                 new RequestCallBack<String>() {
 
                     @Override
@@ -232,8 +232,9 @@ public class RegisterVerificationActivity extends BaseActivity {
                         if (json != null) {
                             if (JsonHandle.getInt(json, "status") == 1) {
                                 MessageHandler.showToast(context, "发送成功");
-                            }else{
-                                MessageHandler.showToast(context, "发送失败");
+                            } else {
+                                MessageHandler.showToast(context, JsonHandle.getString(json, "info"));
+//                                MessageHandler.showToast(context, "发送失败");
                             }
                         }
                         progress.setVisibility(View.GONE);

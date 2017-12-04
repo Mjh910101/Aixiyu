@@ -1,1 +1,2 @@
 include ':app'
+include ':App',':polyvAndroidSDKGif1.0'

@@ -13,11 +13,60 @@
         android:textColor="@color/black_text_24"
         android:textSize="16dp" />
 
-    <ListView
-        android:id="@+id/videoPlayContent_reply_dataList"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/ling_gray"
-        android:dividerHeight="1px" />
+        android:layout_height="match_parent">
+
+
+        <ListView
+            android:id="@+id/videoPlayContent_reply_dataList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/ling_gray"
+            android:dividerHeight="1px"
+            android:paddingBottom="50dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ling_gray" />
+
+            <TextView
+                android:id="@+id/videoPlayContent_reply_commitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/blue_blue_rounded_3"
+                android:paddingBottom="6dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="6dp"
+                android:text="评论"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/videoPlayContent_reply_replyInput"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toLeftOf="@id/videoPlayContent_reply_commitButton"
+                android:background="@drawable/black_transparent_rounded_5"
+                android:padding="3dp"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

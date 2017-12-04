@@ -11,12 +11,170 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/paper_paperLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="46dp" />
+
+        <View
+            android:id="@+id/paper_indexGridBackgroud"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_88"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/paper_indexGridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <GridView
+                android:id="@+id/paper_indexGrid"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:horizontalSpacing="10dp"
+                android:numColumns="4"
+                android:padding="8dp"
+                android:listSelector="@color/white_00"
+                android:scrollbars="none"
+                android:verticalSpacing="10dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
         <RelativeLayout
             android:id="@+id/paper_toolLayout"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/paper_indexGridLayout"
             android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/paper_collectionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/paper_collectionIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/star_gray_icon" />
+
+                <TextView
+                    android:id="@+id/paper_collectionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="收藏"
+                    android:textColor="@color/gray_text_90"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paper_boolenLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/paper_collectionButton"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/question_true_icon" />
+
+                <TextView
+                    android:id="@+id/paper_trueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="0"
+                    android:textColor="@color/bleu_text_36"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/question_flase_icon" />
+
+                <TextView
+                    android:id="@+id/paper_flaseText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="0"
+                    android:textColor="@color/red_text_c7"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paper_indexLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/paper_indexIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/data_list_icon" />
+
+                <TextView
+                    android:id="@+id/paper_indexText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="8dp"
+                    android:text="0/0"
+                    android:textColor="@color/gray_text_90"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/paper_feelBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/paper_boolenLayout"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/feel_back_icon" />
+
+
+                <TextView
+                    android:id="@+id/paper_feelBackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="问题反馈"
+                    android:textColor="@color/gray_text_90"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -26,12 +184,7 @@
             android:layout_alignTop="@id/paper_toolLayout"
             android:background="@color/ling_gray" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/paper_paperLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/paper_toolLayout"
-            android:layout_alignParentTop="true" />
+        <include layout="@layout/view_progress" />
 
     </RelativeLayout>
 

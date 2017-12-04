@@ -122,6 +122,44 @@ public class MessageHandler {
         messageMap.put(1035, " 该游客没有课程，不须合并");
         messageMap.put(1036, " qq第三方通过openid注册失败");
         messageMap.put(1037, " 会员已过期");
+        messageMap.put(1038, " 用户没有收藏课程");
+        messageMap.put(1039, " app  KEY生成失败");
+        messageMap.put(1040, "  没有购买vip");
+        messageMap.put(1041, " 已经收藏该课程");
+        messageMap.put(1042, " 修改失败");
+        messageMap.put(1043, " 数据库添加失败");
+        messageMap.put(1044, " 订单生成失败");
+        messageMap.put(1045, " 用户已经有这个课程");
+        messageMap.put(1046, " 用户添加失败");
+        messageMap.put(1047, " 该token微信端没信息返回");
+        messageMap.put(1048, " 试卷请求类型异常");
+        messageMap.put(1049, " 没有符合条件的题库/试卷");
+        messageMap.put(1050, " 该用户已经收藏过该题库");
+        messageMap.put(1051, " 该用户并没收藏该课程");
+        messageMap.put(1052, " 修改成功");
+        messageMap.put(1053, " 用户没登陆");
+        messageMap.put(1054, " 题库不存在");
+        messageMap.put(1055, " 用户已经提交过该试卷");
+        messageMap.put(1056, " 隐藏");
+        messageMap.put(1057, " 用户没有收藏题库");
+        messageMap.put(1058, " 用户不存在");
+        messageMap.put(1059, " 学点不足");
+        messageMap.put(1060, " 用户已经购买过");
+        messageMap.put(1061, " 已经申请过复读");
+        messageMap.put(1062, " 申请复读成功，课程时间已重置");
+        messageMap.put(1063, " 申请复读成功，课程时间已重置");
+        messageMap.put(1064, " 已经申请过毕业");
+        messageMap.put(1065, " 申请毕业成功，已返回金额到钱包中");
+        messageMap.put(1066, " 缺少课程参数");
+        messageMap.put(1067, " 已经在冻结期");
+        messageMap.put(1068, " 已经没有冻结次数");
+        messageMap.put(1069, " 课程有效期已过,不能进行冻结");
+        messageMap.put(1070, " 课程过期或者不在冻结状态");
+        messageMap.put(1071, " 发送短信失败");
+        messageMap.put(1072, " 该号码已注册过，请直接登录或找回密码");
+        messageMap.put(1073, " 已经获取过该优惠券");
+        messageMap.put(1074, " 已经分享过");
+        messageMap.put(1075, " 已经参加过该比赛");
 
     }
 

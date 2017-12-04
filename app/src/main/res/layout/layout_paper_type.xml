@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <include layout="@layout/view_to_right" />
+
+    <LinearLayout
+        android:id="@+id/paperType_questionTypeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/paperType_questionTypeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_transparent_rounded_5"
+            android:paddingBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="4dp"
+            android:text="type"
+            android:textColor="@color/bleu_text_36"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/paperType_questionNumText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="4dp"
+            android:text="1"
+            android:textColor="@color/bleu_text_36"
+            android:textSize="14dp" />
+    </LinearLayout>
+    
+
+</LinearLayout>
+

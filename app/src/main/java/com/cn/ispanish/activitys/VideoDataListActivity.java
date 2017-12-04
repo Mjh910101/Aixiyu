@@ -153,7 +153,7 @@ public class VideoDataListActivity extends BaseActivity {
         params.addBodyParameter("sid", id);
         params.addBodyParameter("key", User.getAppKey(context));
 
-        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getVideoPlay(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getVideoPlay(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

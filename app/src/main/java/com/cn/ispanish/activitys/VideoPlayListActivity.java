@@ -1,13 +1,9 @@
 package com.cn.ispanish.activitys;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.graphics.Palette;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,19 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.alipay.sdk.app.PayTask;
 import com.cn.ispanish.R;
+import com.cn.ispanish.activitys.play.PlayOrderActivity;
 import com.cn.ispanish.adapters.CommentAdapter;
 import com.cn.ispanish.adapters.VideoTitleAdapter;
 import com.cn.ispanish.box.Comment;
 import com.cn.ispanish.box.IndexBlock;
 import com.cn.ispanish.box.Teacher;
 import com.cn.ispanish.box.User;
-import com.cn.ispanish.box.Video;
 import com.cn.ispanish.box.VideoInfo;
-import com.cn.ispanish.dialog.ListDialog;
 import com.cn.ispanish.download.DownloadImageLoader;
 import com.cn.ispanish.handlers.ColorHandle;
 import com.cn.ispanish.handlers.JsonHandle;
@@ -36,9 +29,6 @@ import com.cn.ispanish.handlers.PassagewayHandler;
 import com.cn.ispanish.handlers.WinHandler;
 import com.cn.ispanish.http.HttpUtilsBox;
 import com.cn.ispanish.http.UrlHandle;
-import com.cn.ispanish.topup.zhifubao.AuthResult;
-import com.cn.ispanish.topup.zhifubao.PayResult;
-import com.cn.ispanish.topup.zhifubao.ZhiFuBao;
 import com.cn.ispanish.views.InsideListView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -54,11 +44,8 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * *
@@ -178,7 +165,7 @@ public class VideoPlayListActivity extends BaseActivity {
 //            downloadOrderId();
 //            showPlayDialog();
             Bundle b = new Bundle();
-            b.putString(PlayOrderActivity.TOPUP_BLOCK, block.getCourseid());
+            b.putString(PlayOrderActivity.TOPUP_ID, block.getCourseid());
             b.putString(PlayOrderActivity.TOPUP_TITLE, block.getName());
             b.putString(PlayOrderActivity.TOPUP_MONEY, block.getPrice());
 
@@ -216,7 +203,7 @@ public class VideoPlayListActivity extends BaseActivity {
         params.addBodyParameter("sid", id);
         params.addBodyParameter("start", "3");
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getVideoComment(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getVideoComment(context), params,
                 new RequestCallBack<String>() {
 
                     @Override
@@ -266,7 +253,7 @@ public class VideoPlayListActivity extends BaseActivity {
         params.addBodyParameter("sid", id);
         params.addBodyParameter("key", User.getAppKey(context));
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getVideoPlay(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getVideoPlay(context), params,
                 new RequestCallBack<String>() {
 
                     @Override

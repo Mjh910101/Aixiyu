@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp">
+
+        <ImageView
+            android:id="@+id/paperAudio_playButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/audio_play_icon" />
+
+        <TextView
+            android:id="@+id/paperAudio_playTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="0:0"
+            android:textColor="@color/gray_text_66"
+            android:textSize="13dp" />
+
+        <SeekBar
+            android:id="@+id/paperAudio_playSeekBar"
+            style="@style/MediaController_SeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/paperAudio_playTimeText"
+            android:layout_toRightOf="@id/paperAudio_playButton"
+            android:max="100" />
+
+    </RelativeLayout>
+
+</LinearLayout>

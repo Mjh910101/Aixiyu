@@ -16,6 +16,34 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true" />
 
+
+        <ImageView
+            android:id="@+id/videoPlayContent_videoIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/video_logo_icon" />
+
+
+        <com.cn.ispanish.views.ScrollingTextView
+            android:id="@+id/videoPlayContent_runText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/videoPlayContent_videoIcon"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="欢迎来到爱西语网校，欢迎来到爱西语网校，欢迎来到爱西语网校，欢迎来到爱西语网校"
+            android:textColor="@color/red_text_c7"
+            android:textSize="14dp" />
+
+
         <master.flame.danmaku.ui.widget.DanmakuView
             android:id="@+id/videoPlayContent_danmaku"
             android:layout_width="match_parent"

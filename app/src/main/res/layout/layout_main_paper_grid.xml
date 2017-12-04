@@ -5,48 +5,266 @@
     android:layout_marginTop="6dp"
     android:background="@color/white"
     android:orientation="horizontal"
-    android:paddingBottom="10dp"
     android:paddingTop="10dp">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/paper_4Button"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/paper_4_icon"
-        android:gravity="center"
-        android:text="专四题库"
-        android:textColor="@color/black_text_24"
-        android:textSize="16dp" />
+        android:layout_weight="1">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/paper_8_icon"
-        android:gravity="center"
-        android:text="专八题库"
-        android:textColor="@color/black_text_24"
-        android:textSize="16dp" />
+        <LinearLayout
+            android:id="@+id/paper_4BottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/paper_dell_icon"
-        android:gravity="center"
-        android:text="DELL题库"
-        android:textColor="@color/black_text_24"
-        android:textSize="16dp" />
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_fout_icon" />
 
-    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="专四题库"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/paper_4TopButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_fout_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="专四题库"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/paper_fourLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/four_ling" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/paper_8Button"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:drawableTop="@drawable/paper_index_icon"
-        android:gravity="center"
-        android:text="基础练习"
-        android:textColor="@color/black_text_24"
-        android:textSize="16dp" />
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/paper_8BottonButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_eight_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="专八题库"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paper_8TopButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_eight_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="专八题库"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/paper_enghtLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/enght_ling"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/paper_dellButton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/paper_dellBottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_dell_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="DELE题库"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paper_dellTopButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_dell_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="DELE题库"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/paper_deleLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/dele_ling"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/paper_indexButton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/paper_indexBottomButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_index_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="基础练习"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paper_indexTopButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/paper_index_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="基础练习"
+                android:textColor="@color/black_text_24"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/paper_indexLine"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/index_ling"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

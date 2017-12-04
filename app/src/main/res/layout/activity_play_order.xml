@@ -11,178 +11,476 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/playOrder_confirm_titleText"
+            <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="12dp"
-                android:text=""
-                android:textColor="@color/black_text_24"
-                android:textSize="17dp" />
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/ling_gray" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/ling_gray" />
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:text="支付金额"
-                    android:textColor="@color/black_text_24"
-                    android:textSize="17dp" />
+                    android:background="@color/white"
+                    android:padding="12dp">
 
-                <TextView
-                    android:id="@+id/playOrder_confirm_topUpManey"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/playOrder_confirm_topUpManey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="￥500.00"
+                        android:textColor="@color/red_text_c7"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/playOrder_confirm_titleText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/playOrder_confirm_topUpManey"
+                        android:background="@color/white"
+                        android:text=""
+                        android:textColor="@color/black_text_24"
+                        android:textSize="17dp" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/playOrder_confirm_couponLine"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/ling_gray" />
+
+                <RelativeLayout
+                    android:id="@+id/playOrder_confirm_couponButton"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="￥500.00"
-                    android:textColor="@color/red_text_c7"
-                    android:textSize="17dp" />
+                    android:background="@color/white"
+                    android:padding="12dp">
 
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="优惠券"
+                        android:textColor="@color/black_text_24"
+                        android:textSize="17dp" />
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/ling_gray" />
+                    <ImageView
+                        android:id="@+id/playOrder_confirm_couponRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/black_next_icon" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:text="请选择支付方式"
-                android:textColor="@color/black_text_24"
-                android:textSize="15dp" />
+                    <TextView
+                        android:id="@+id/playOrder_confirm_couponText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/playOrder_confirm_couponRight"
+                        android:text=""
+                        android:textColor="@color/black_text_24"
+                        android:textSize="17dp" />
 
+                </RelativeLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/ling_gray" />
+                <View
+                    android:id="@+id/playOrder_confirm_balanceLine"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/ling_gray" />
 
-            <RelativeLayout
-                android:id="@+id/playOrder_confirm_zhifubaoLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingBottom="8dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="8dp">
-
-                <ImageView
-                    android:id="@+id/playOrder_confirm_zhifubaoIcon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/zhifubao" />
-
-                <TextView
-                    android:id="@+id/playOrder_confirm_zhifubaoText"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/playOrder_confirm_balanceButton"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/playOrder_confirm_zhifubaoIcon"
-                    android:text="支付宝"
-                    android:textColor="@color/black_text_24"
-                    android:textSize="18dp" />
+                    android:background="@color/white"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="账户余额"
+                        android:textColor="@color/black_text_24"
+                        android:textSize="17dp" />
+
+                    <RadioButton
+                        android:id="@+id/playOrder_confirm_balanceRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:button="@drawable/pay_balance_sype"
+                        android:checked="true"
+                        android:clickable="false" />
+
+                    <TextView
+                        android:id="@+id/playOrder_confirm_balanceManey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/playOrder_confirm_balanceRadio"
+                        android:text="￥0"
+                        android:textColor="@color/orange_text_f9"
+                        android:textSize="17dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/ling_gray" />
+
+                <LinearLayout
+                    android:id="@+id/playOrder_confirm_payLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/playOrder_confirm_zhifubaoText"
-                    android:layout_toRightOf="@id/playOrder_confirm_zhifubaoIcon"
-                    android:text="建议支付宝用户使用"
-                    android:textColor="@color/gray_text_90"
-                    android:textSize="15dp" />
+                    android:orientation="vertical">
 
-                <RadioButton
-                    android:id="@+id/playOrder_confirm_zhifubaoRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:button="@drawable/pay_sype"
-                    android:clickable="false" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:text="请选择支付方式"
+                        android:textColor="@color/black_text_24"
+                        android:textSize="15dp" />
 
-            </RelativeLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/ling_gray" />
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@color/ling_gray" />
 
-            <RelativeLayout
-                android:id="@+id/playOrder_confirm_weixinLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingBottom="8dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="8dp"
-                android:visibility="visible">
+                    <RelativeLayout
+                        android:id="@+id/playOrder_confirm_zhifubaoLayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="8dp">
 
-                <ImageView
-                    android:id="@+id/playOrder_confirm_weixinIcon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/weixin" />
+                        <ImageView
+                            android:id="@+id/playOrder_confirm_zhifubaoIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/zhifubao" />
 
-                <TextView
-                    android:id="@+id/playOrder_confirm_weixinText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/playOrder_confirm_weixinIcon"
-                    android:text="微信支付"
-                    android:textColor="@color/black_text_24"
-                    android:textSize="18dp" />
+                        <TextView
+                            android:id="@+id/playOrder_confirm_zhifubaoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/playOrder_confirm_zhifubaoIcon"
+                            android:text="支付宝"
+                            android:textColor="@color/black_text_24"
+                            android:textSize="18dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/playOrder_confirm_weixinText"
-                    android:layout_toRightOf="@id/playOrder_confirm_weixinIcon"
-                    android:text="建议微信用户使用"
-                    android:textColor="@color/gray_text_90"
-                    android:textSize="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/playOrder_confirm_zhifubaoText"
+                            android:layout_toRightOf="@id/playOrder_confirm_zhifubaoIcon"
+                            android:text="建议支付宝用户使用"
+                            android:textColor="@color/gray_text_90"
+                            android:textSize="15dp" />
 
-                <RadioButton
-                    android:id="@+id/playOrder_confirm_weixinRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:button="@drawable/pay_sype"
-                    android:clickable="false" />
+                        <RadioButton
+                            android:id="@+id/playOrder_confirm_zhifubaoRadio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:button="@drawable/pay_sype"
+                            android:clickable="false" />
 
-            </RelativeLayout>
+                    </RelativeLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/ling_gray" />
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@color/ling_gray"
+                        android:visibility="gone" />
 
-        </LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/playOrder_confirm_huabeiLayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="8dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/playOrder_confirm_huabeiIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/hb_icon" />
+
+                        <TextView
+                            android:id="@+id/playOrder_confirm_huabeiText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/playOrder_confirm_huabeiIcon"
+                            android:text="花呗分期"
+                            android:textColor="@color/black_text_24"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/playOrder_confirm_huabeiText"
+                            android:layout_toRightOf="@id/playOrder_confirm_huabeiIcon"
+                            android:text="建议花呗用户使用"
+                            android:textColor="@color/gray_text_90"
+                            android:textSize="15dp" />
+
+                        <RadioButton
+                            android:id="@+id/playOrder_confirm_huabeiRadio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:button="@drawable/pay_sype"
+                            android:clickable="false"
+                            android:visibility="invisible" />
+
+                        <ImageView
+                            android:id="@+id/playOrder_confirm_huabeiRightIcon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/dowm_icon" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/playOrder_confirm_huabeiRadioLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingLeft="55dp"
+                        android:visibility="gone">
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1px"
+                            android:background="@color/ling_gray" />
+
+                        <RelativeLayout
+                            android:id="@+id/playOrder_confirm_huabeiIn3Layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="8dp">
+
+
+                            <TextView
+                                android:id="@+id/playOrder_confirm_huabeiIn3Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="3期"
+                                android:textColor="@color/black_text_24"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/playOrder_confirm_huabeiIn3Info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/playOrder_confirm_huabeiIn3Text"
+                                android:text="22222"
+                                android:textColor="@color/gray_text_90"
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/playOrder_confirm_huabeiIn3Radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:button="@drawable/pay_sype"
+                                android:clickable="false" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1px"
+                            android:background="@color/ling_gray" />
+
+                        <RelativeLayout
+                            android:id="@+id/playOrder_confirm_huabeiIn6Layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="8dp">
+
+
+                            <TextView
+                                android:id="@+id/playOrder_confirm_huabeiIn6Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="6期"
+                                android:textColor="@color/black_text_24"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/playOrder_confirm_huabeiIn6Info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/playOrder_confirm_huabeiIn6Text"
+                                android:text="22222"
+                                android:textColor="@color/gray_text_90"
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/playOrder_confirm_huabeiIn6Radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:button="@drawable/pay_sype"
+                                android:clickable="false" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1px"
+                            android:background="@color/ling_gray" />
+
+                        <RelativeLayout
+                            android:id="@+id/playOrder_confirm_huabeiIn12Layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="8dp">
+
+
+                            <TextView
+                                android:id="@+id/playOrder_confirm_huabeiIn12Text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12期"
+                                android:textColor="@color/black_text_24"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/playOrder_confirm_huabeiIn12Info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/playOrder_confirm_huabeiIn12Text"
+                                android:text="22222"
+                                android:textColor="@color/gray_text_90"
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/playOrder_confirm_huabeiIn12Radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:button="@drawable/pay_sype"
+                                android:clickable="false" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@color/ling_gray" />
+
+                    <RelativeLayout
+                        android:id="@+id/playOrder_confirm_weixinLayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="8dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/playOrder_confirm_weixinIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/weixin" />
+
+                        <TextView
+                            android:id="@+id/playOrder_confirm_weixinText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/playOrder_confirm_weixinIcon"
+                            android:text="微信支付"
+                            android:textColor="@color/black_text_24"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/playOrder_confirm_weixinText"
+                            android:layout_toRightOf="@id/playOrder_confirm_weixinIcon"
+                            android:text="建议微信用户使用"
+                            android:textColor="@color/gray_text_90"
+                            android:textSize="15dp" />
+
+                        <RadioButton
+                            android:id="@+id/playOrder_confirm_weixinRadio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:button="@drawable/pay_sype"
+                            android:clickable="false" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@color/ling_gray" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
 
         <TextView
             android:id="@+id/playOrder_confirm_topUpBtm"

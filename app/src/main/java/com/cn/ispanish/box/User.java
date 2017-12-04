@@ -3,6 +3,7 @@ package com.cn.ispanish.box;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
+import android.view.View;
 
 import com.cn.ispanish.activitys.LoginActivity;
 import com.cn.ispanish.dialog.MessageDialog;
@@ -10,6 +11,15 @@ import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
 import com.cn.ispanish.handlers.PassagewayHandler;
 import com.cn.ispanish.handlers.SystemHandle;
+import com.cn.ispanish.handlers.TextHandler;
+import com.cn.ispanish.http.HttpUtilsBox;
+import com.cn.ispanish.http.UrlHandle;
+import com.cn.ispanish.interfaces.CallbackForString;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 import org.json.JSONObject;
 
@@ -395,6 +405,8 @@ public class User {
 
     public static void logout(Context context) {
         SystemHandle.saveStringMessage(context, TAP + "app_key", "");
+        SystemHandle.saveStringMessage(context, TAP + "id", "");
+        SystemHandle.saveLongMessage(context, SystemHandle.LUCK_TIME, 0);
     }
 
     public static void savePortrait(Context context, String v) {
@@ -436,6 +448,10 @@ public class User {
         return SystemHandle.getString(context, TAP + "name");
     }
 
+    public static String getUserId(Context context) {
+        return SystemHandle.getString(context, TAP + "id");
+    }
+
     public static String getPortrait(Context context) {
         return SystemHandle.getString(context, TAP + "portrait");
     }
@@ -469,5 +485,37 @@ public class User {
             dialog.setCancelListener(callback);
         }
         return isLogin;
+    }
+
+    public static void selectBalance(final Context context, final CallbackForString callback) {
+        RequestParams params = HttpUtilsBox.getRequestParams(context);
+        params.addBodyParameter("key", User.getAppKey(context));
+
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getSelectBalance(context), params,
+                new RequestCallBack<String>() {
+
+                    @Override
+                    public void onFailure(HttpException exception,
+                                          String msg) {
+                        MessageHandler.showFailure(context);
+                    }
+
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        Log.d("", result);
+
+                        JSONObject json = JsonHandle.getJSON(JsonHandle.getJSON(result), "result");
+                        if (json != null && JsonHandle.getInt(json, "code") == 1) {
+                            String data = JsonHandle.getString(json, "data");
+                            callback.callback(data);
+
+                        }
+                    }
+                });
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

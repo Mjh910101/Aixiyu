@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.cn.ispanish.R;
 import com.cn.ispanish.box.User;
+import com.cn.ispanish.handlers.BindingMobileHandler;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
 import com.cn.ispanish.handlers.PassagewayHandler;
@@ -97,6 +98,11 @@ public class LoginActivity extends BaseActivity {
         PassagewayHandler.jumpActivity(context, RegisterVerificationActivity.class);
     }
 
+    @OnClick(R.id.login_forgetButton)
+    public void onForget(View view) {
+        PassagewayHandler.jumpActivity(context, ForgetActivity.class);
+    }
+
     @OnClick(R.id.login_loginButton)
     public void onLogin(View view) {
         login();
@@ -145,7 +151,8 @@ public class LoginActivity extends BaseActivity {
 
     private boolean isHavePassword() {
         int l = TextHandler.getText(passwordInput).length();
-        if (l >= 6 && l <= 16) {
+        if (l >= 6) {
+//        if (l >= 6 && l <= 16) {
             return true;
         }
         return false;
@@ -173,7 +180,7 @@ public class LoginActivity extends BaseActivity {
         params.addBodyParameter("yhmm", TextHandler.getText(passwordInput));
 
 
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getLogin(), params,
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.POST, UrlHandle.getLogin(context), params,
                 new RequestCallBack<String>() {
 
                     @Override
@@ -201,6 +208,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void close() {
+        BindingMobileHandler.isBindingMobile(context);
         setResult(RequestCode);
         finish();
     }
@@ -321,16 +329,16 @@ public class LoginActivity extends BaseActivity {
             switch (msg.what) {
                 case 1:
                     params.addBodyParameter("url", platform.getDb().getToken());
-                    login(platform, UrlHandle.getQjogg(), params);
+                    login(platform, UrlHandle.getQjogg(context), params);
                     break;
                 case 2:
                     params.addBodyParameter("token", platform.getDb().getToken());
-                    login(platform, UrlHandle.getWbdl(), params);
+                    login(platform, UrlHandle.getWbdl(context), params);
                     break;
                 case 3:
                     params.addBodyParameter("token", platform.getDb().getToken());
                     params.addBodyParameter("openid", platform.getDb().getUserId());
-                    login(platform, UrlHandle.getWxdl(), params);
+                    login(platform, UrlHandle.getWxdl(context), params);
                     break;
             }
         }

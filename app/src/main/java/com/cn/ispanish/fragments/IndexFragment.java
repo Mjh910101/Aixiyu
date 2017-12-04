@@ -122,7 +122,7 @@ public class IndexFragment extends BaseFragment {
 
     private void downloadBanner() {
         progress.setVisibility(View.VISIBLE);
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.GET, UrlHandle.getBanner(),
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.GET, UrlHandle.getBanner(context),
                 new RequestCallBack<String>() {
 
                     @Override
@@ -162,7 +162,8 @@ public class IndexFragment extends BaseFragment {
 
     private void downloadData() {
         progress.setVisibility(View.VISIBLE);
-        HttpUtilsBox.getHttpUtil().send(HttpMethod.GET, UrlHandle.getIndexblock(),
+//        HttpUtilsBox.getHttpUtil().send(HttpMethod.GET, "http://39.108.246.159/index.php/Home/Api/apptest.html",
+        HttpUtilsBox.getHttpUtil().send(HttpMethod.GET, UrlHandle.getIndexblock(context),
                 new RequestCallBack<String>() {
 
                     @Override

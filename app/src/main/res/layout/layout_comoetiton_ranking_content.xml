@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/competitionRanking_viewPage_userText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:text="领奖联系客服微信: aixiyu1234"
+        android:textColor="@color/black_text_24"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/competitionRanking_viewPage_sumText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/competitionRanking_viewPage_userText"
+        android:text="参与人数：100"
+        android:textColor="@color/black_text_24"
+        android:textSize="15dp" />
+
+    <ListView
+        android:id="@+id/competitionRanking_viewPage_contentItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/competitionRanking_viewPage_sumText"
+        android:divider="@color/ling_gray"
+        android:dividerHeight="1px"
+        android:orientation="vertical"
+        android:scrollbars="none" />
+
+    <include layout="@layout/view_progress" />
+
+</RelativeLayout>

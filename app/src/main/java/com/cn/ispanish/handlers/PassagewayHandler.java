@@ -3,14 +3,19 @@ package com.cn.ispanish.handlers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 
 
+import com.cn.ispanish.activitys.FirstActivity;
 import com.cn.ispanish.download.DownloadImageLoader;
 
 import java.io.File;
+import java.util.List;
 
 public class PassagewayHandler {
 
@@ -20,7 +25,8 @@ public class PassagewayHandler {
 
     public static void resizeImage(Context context, Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
+//        intent.setDataAndType(uri, "image/*");
+        intent.setDataAndType(GetPathFromUriHandler.getUri((Activity) context, uri), "image/*");
         intent.putExtra("crop", "true");
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
@@ -28,6 +34,14 @@ public class PassagewayHandler {
         intent.putExtra("outputY", 150);
         intent.putExtra("return-data", true);
         ((Activity) (context)).startActivityForResult(intent, RESULT_REQUEST_CODE);
+    }
+
+    public static void selectImage(Context context, Uri imageUri) {
+        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        galleryIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        galleryIntent.setType("image/*");
+        galleryIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        ((Activity) (context)).startActivityForResult(galleryIntent, IMAGE_REQUEST_CODE);
     }
 
     public static void selectImage(Context context) {
@@ -155,5 +169,44 @@ public class PassagewayHandler {
     public static void jumpToActivity(Context context, Class<?> cls, Bundle b) {
         jumpActivity(context, Intent.FLAG_ACTIVITY_CLEAR_TOP, cls, b);
         ((Activity) context).finish();
+    }
+
+    public static boolean jumpFirstActivity(Context context) {
+        if (SystemHandle.isFirst(context)) {
+            jumpActivity(context, FirstActivity.class);
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void jumpQQ(Context context, String uin) {
+        boolean isCan = false;
+        try {
+            Log.e("", "uin = " + uin);
+            if (isQQClientAvailable(context)) {
+                isCan = true;
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=" + uin)));
+            }
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+        if (!isCan) {
+            MessageHandler.showToast(context, "您的QQ版本过低或您当前未安装QQ,请安装最新版QQ后再试");
+        }
+    }
+
+    public static boolean isQQClientAvailable(Context context) {
+        final PackageManager packageManager = context.getPackageManager();
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName;
+                if (pn.equals("com.tencent.mobileqq")) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
