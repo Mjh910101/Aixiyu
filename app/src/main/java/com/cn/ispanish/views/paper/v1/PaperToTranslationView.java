@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.interfaces.OnQuestionListener;
 import com.cn.ispanish.views.paper.PaperContentView;
@@ -56,8 +57,8 @@ public class PaperToTranslationView extends PaperContentView {
     @ViewInject(R.id.paperTranslation_questionPic)
     private ImageView questionPic;
 
-    public PaperToTranslationView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToTranslationView(Context context, Question question, int position, OnQuestionListener onQuestion,QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion,callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_translation, null);
 

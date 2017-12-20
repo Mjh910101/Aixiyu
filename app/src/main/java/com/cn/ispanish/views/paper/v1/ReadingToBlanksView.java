@@ -68,7 +68,7 @@ public class ReadingToBlanksView extends PaperContentView {
 
 
     public ReadingToBlanksView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_single, null);
 

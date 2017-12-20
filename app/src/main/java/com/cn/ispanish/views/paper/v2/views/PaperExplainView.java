@@ -1,6 +1,7 @@
 package com.cn.ispanish.views.paper.v2.views;
 
 import android.content.Context;
+import android.support.annotation.IntDef;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.download.DownloadImageLoader;
 import com.cn.ispanish.handlers.WinHandler;
@@ -46,6 +48,8 @@ public class PaperExplainView extends LinearLayout {
     private TextView questionAnswerText;
     @ViewInject(R.id.paperExplain_questionAnswerImage)
     private ImageView questionAnswerImage;
+    @ViewInject(R.id.paperExplain_commentsView)
+    private PaperCommentsView commentsView;
 
     private Context context;
 
@@ -86,10 +90,11 @@ public class PaperExplainView extends LinearLayout {
         addView(view);
     }
 
-    public void initQuestion(Question question, int num) {
+    public void initQuestion(Question question, int num, QuestionCommentAdapter.CallbackForComment callbackForComment) {
         this.question = question;
         this.num = num;
         initViewData();
+        commentsView.initQuestion(question, num, callbackForComment);
     }
 
     private void initViewData() {
@@ -98,7 +103,6 @@ public class PaperExplainView extends LinearLayout {
         if (!answer.equals("")) {
             if (answer.contains("http://") || answer.contains("https://")) {
                 questionAnswerImage.setVisibility(VISIBLE);
-
                 double w = WinHandler.getWinWidth(context) / 3 * 2;
                 double h = w / 16 * 9;
                 questionAnswerImage.setLayoutParams(new RelativeLayout.LayoutParams((int) w, (int) h));
@@ -114,10 +118,14 @@ public class PaperExplainView extends LinearLayout {
 //            questionExplainText.setText("解析：\n" + question.getExplain());
             questionExplainText.setText(Html.fromHtml("<font color=\"#333333\">" + "解析" + "</font>" + "<br>" +
                     "<font color=\"#565656\">" + question.getExplain() + "</font>"));
-
         }
 
     }
 
 
+    @Override
+    public void setVisibility(int visibility) {
+        super.setVisibility(visibility);
+        commentsView.setVisibility(visibility);
+    }
 }

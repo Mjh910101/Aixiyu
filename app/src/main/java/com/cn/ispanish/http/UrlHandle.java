@@ -542,4 +542,14 @@ public class UrlHandle {
     public static String getDemandBank(Context context) {
         return getIndexUrl(context) + "/demandbank.html";
     }
+
+    public static String getBackBankComment(Context context) {
+        return getIndexUrl(context) + "/backbankcomment.html";
+    }
+    public static String getBankCommentGood(Context context) {
+        return getIndexUrl(context) + "/bankcommentgood.html";
+    }
+    public static String getSaveBankComment(Context context) {
+        return getIndexUrl(context) + "/savebankcomment.html";
+    }
 }

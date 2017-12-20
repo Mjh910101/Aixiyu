@@ -20,6 +20,7 @@ import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.box.question.ReadingQuestion;
 import com.cn.ispanish.dao.DBHandler;
 import com.cn.ispanish.dialog.MessageDialog;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
 import com.cn.ispanish.handlers.FeelBackHandler;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
@@ -193,6 +194,7 @@ public class PaperForQuestionErrorInTypeActivity extends BaseActivity {
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("key", User.getAppKey(context));
         params.addBodyParameter("type", type);
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getType2Tit(context), params,
                 new RequestCallBack<String>() {
@@ -312,6 +314,7 @@ public class PaperForQuestionErrorInTypeActivity extends BaseActivity {
                         }
                     }
                     break;
+                case Question.TingLi:
                 case Question.TingLi_DATI:
                 case Question.TingLi_XUANZHE:
                 case Question.TingLi_PANDUAN:
@@ -413,7 +416,7 @@ public class PaperForQuestionErrorInTypeActivity extends BaseActivity {
     }
 
     private PaperContentView getContentView(Question question, int position) {
-        return PaperContentView.getContentView(context, question, position, onQuestion);
+        return PaperContentView.getContentView(context, question, position, onQuestion,null);
     }
 
     int tureSum = 0;

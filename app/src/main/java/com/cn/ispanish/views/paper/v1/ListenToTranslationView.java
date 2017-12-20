@@ -61,7 +61,7 @@ public class ListenToTranslationView extends PaperContentView {
     private ScrollView scrollView;
 
     public ListenToTranslationView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_translation, null);
 

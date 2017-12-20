@@ -7,6 +7,7 @@ import android.view.View;
 import com.cn.ispanish.R;
 import com.cn.ispanish.box.User;
 import com.cn.ispanish.dao.DBHandler;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
 import com.cn.ispanish.http.HttpUtilsBox;
@@ -70,6 +71,9 @@ public class Question implements Comparable {
     public final static int XuanZhe_IMAGE = 17;
     public final static int TianKong = 18;
     public final static int TingLi_LuYin = 19;
+    public final static int LinaXian = 26;
+    public final static int DuoXuan = 24;
+    public final static int DuoXuan_ZuHe = 25;
 
     @Id(column = "kid")
     private String id;
@@ -335,6 +339,11 @@ public class Question implements Comparable {
                 return "听力听写";
             case TianKong:
                 return "填空题";
+            case LinaXian:
+                return "连线题";
+            case DuoXuan:
+            case DuoXuan_ZuHe:
+                return "多选题";
         }
         return "        ";
     }
@@ -463,6 +472,7 @@ public class Question implements Comparable {
         params.addBodyParameter("key", User.getAppKey(context));
         params.addBodyParameter("tid", q.getId());
         params.addBodyParameter("isclean", "1");
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getSaveErrorTit(context), params,
                 new RequestCallBack<String>() {
@@ -485,6 +495,7 @@ public class Question implements Comparable {
         params.addBodyParameter("key", User.getAppKey(context));
         params.addBodyParameter("tid", q.getId());
         params.addBodyParameter("isclean", "0");
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getSaveErrorTit(context), params,
                 new RequestCallBack<String>() {

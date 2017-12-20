@@ -9,6 +9,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.handlers.ColorHandle;
 import com.cn.ispanish.interfaces.OnQuestionListener;
@@ -66,7 +67,7 @@ public class ListenToJudgeView extends PaperContentView {
     private ScrollView scrollView;
 
     public ListenToJudgeView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion, null);
 
         view = inflater.inflate(R.layout.layout_paper_judge, null);
 

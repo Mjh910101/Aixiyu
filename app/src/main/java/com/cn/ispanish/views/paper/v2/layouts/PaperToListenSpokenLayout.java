@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.ListenQuestion;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.interfaces.OnQuestionListener;
@@ -56,8 +57,8 @@ public class PaperToListenSpokenLayout extends PaperContentView {
     @ViewInject(R.id.paperListenSpoken_spokenView)
     private PaperSpokenView spokenView;
 
-    public PaperToListenSpokenLayout(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToListenSpokenLayout(Context context, Question question, int position, OnQuestionListener onQuestion, QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion, callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_listen_spoken, null);
 

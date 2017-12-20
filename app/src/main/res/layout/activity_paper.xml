@@ -38,9 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:horizontalSpacing="10dp"
+                android:listSelector="@color/white_00"
                 android:numColumns="4"
                 android:padding="8dp"
-                android:listSelector="@color/white_00"
                 android:scrollbars="none"
                 android:verticalSpacing="10dp"
                 android:visibility="gone" />
@@ -153,8 +153,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@id/paper_boolenLayout"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/paper_indexLayout"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -164,15 +164,41 @@
                     android:layout_marginLeft="5dp"
                     android:src="@drawable/feel_back_icon" />
 
-
                 <TextView
                     android:id="@+id/paper_feelBackText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
-                    android:text="问题反馈"
+                    android:text="反馈"
                     android:textColor="@color/gray_text_90"
-                    android:textSize="15dp" />
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paper_commentsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/paper_feelBackButton"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/live_comment" />
+
+                <TextView
+                    android:id="@+id/paper_commentsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="评论"
+                    android:textColor="@color/gray_text_90"
+                    android:textSize="14dp" />
 
             </LinearLayout>
 
@@ -185,6 +211,76 @@
             android:background="@color/ling_gray" />
 
         <include layout="@layout/view_progress" />
+
+        <RelativeLayout
+            android:id="@+id/paper_commentsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/paper_commentsBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black_88" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white_smoke_f5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/white_smoke"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="回复"
+                        android:textColor="@color/gray_text_66"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/paper_goneButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="取消"
+                        android:textColor="@color/gray_text_66"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/paper_upladCommentsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="发布"
+                        android:textColor="@color/bleu_text_36"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/paper_commentsInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/while_white_rounded_5"
+                    android:gravity="left|top"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 

@@ -289,7 +289,7 @@ public class PaperForErrorActivity extends BaseActivity {
     }
 
     private PaperContentView getContentView(Question question, int position) {
-        return PaperContentView.getContentView(context, question, position, onQuestion);
+        return PaperContentView.getContentView(context, question, position, onQuestion,null);
     }
 
     int tureSum = 0;

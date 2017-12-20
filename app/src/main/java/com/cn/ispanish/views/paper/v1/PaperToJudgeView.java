@@ -59,7 +59,7 @@ public class PaperToJudgeView extends PaperContentView {
     private ImageView questionPic;
 
     public PaperToJudgeView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_judge, null);
 

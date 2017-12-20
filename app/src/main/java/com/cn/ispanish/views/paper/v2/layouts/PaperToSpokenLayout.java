@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.text.Html;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.interfaces.CallbackForBoolean;
 import com.cn.ispanish.interfaces.OnQuestionListener;
@@ -49,8 +50,8 @@ public class PaperToSpokenLayout extends PaperContentView {
     @ViewInject(R.id.paperSpoken_explainView)
     private PaperExplainView explainView;
 
-    public PaperToSpokenLayout(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToSpokenLayout(Context context, Question question, int position, OnQuestionListener onQuestion, QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion,callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_to_spoken, null);
 
@@ -65,7 +66,7 @@ public class PaperToSpokenLayout extends PaperContentView {
     public void initViewData() {
         typeView.initQuestion(question.getQuestionType(), position);
         titleView.initQuestion(question, position);
-        explainView.initQuestion(question, position);
+        explainView.initQuestion(question, position,callbackForComment);
         spokenView.initQuestion(question);
         spokenView.setOnStop(new CallbackForBoolean() {
             @Override

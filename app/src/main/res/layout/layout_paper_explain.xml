@@ -67,4 +67,10 @@
         android:textColor="@color/gray_text_56"
         android:textSize="17dp" />
 
+    <com.cn.ispanish.views.paper.v2.views.PaperCommentsView
+        android:id="@+id/paperExplain_commentsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
 </LinearLayout>

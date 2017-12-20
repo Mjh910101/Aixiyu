@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.text.Html;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.interfaces.CallbackForBoolean;
 import com.cn.ispanish.interfaces.OnQuestionListener;
@@ -51,8 +52,8 @@ public class PaperToRadioLayout extends PaperContentView {
     @ViewInject(R.id.paperRadio_explainView)
     private PaperExplainView explainView;
 
-    public PaperToRadioLayout(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToRadioLayout(Context context, Question question, int position, OnQuestionListener onQuestion, QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion, callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_to_radio, null);
 
@@ -67,7 +68,7 @@ public class PaperToRadioLayout extends PaperContentView {
     public void initViewData() {
         typeView.initQuestion(question.getQuestionType(), position);
         titleView.initQuestion(question, position);
-        explainView.initQuestion(question, position);
+        explainView.initQuestion(question, position, callbackForComment);
         radioView.initQuestion(question);
         radioView.setOnQuestion(new OnQuestionListener() {
             @Override

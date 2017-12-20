@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ling_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="精华点评"
+        android:layout_margin="8dp"
+        android:textColor="@color/gray_text_66"
+        android:textSize="16dp" />
+
+    <com.cn.ispanish.views.InsideListView
+        android:id="@+id/paperComments_hotList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/white_00"
+        android:dividerHeight="0dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ling_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全部评论"
+        android:layout_margin="8dp"
+        android:textColor="@color/gray_text_66"
+        android:textSize="16dp" />
+
+    <com.cn.ispanish.views.InsideListView
+        android:id="@+id/paperComments_commentsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/white_00"
+        android:dividerHeight="0dp" />
+
+</LinearLayout>

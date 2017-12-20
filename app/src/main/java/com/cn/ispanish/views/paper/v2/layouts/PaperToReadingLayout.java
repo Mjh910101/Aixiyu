@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.box.question.ReadingQuestion;
 import com.cn.ispanish.handlers.MessageHandler;
@@ -62,8 +63,8 @@ public class PaperToReadingLayout extends PaperContentView {
     private List<PaperContentView> viewList;
     private PagerContentAdapter contentAdapter;
 
-    public PaperToReadingLayout(Context context, ReadingQuestion question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToReadingLayout(Context context, ReadingQuestion question, int position, OnQuestionListener onQuestion, QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion, callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_cloze, null);
         readingQuestion = question;
@@ -167,7 +168,7 @@ public class PaperToReadingLayout extends PaperContentView {
 
         private PaperContentView getContentView(Question question, int position) {
             position = position + 1;
-            ChildInRadioLayout layout = new ChildInRadioLayout(context, question, position, onReadingQuestion);
+            ChildInRadioLayout layout = new ChildInRadioLayout(context, question, position, onReadingQuestion, callbackForComment);
             layout.setGame(isGame);
             layout.setInChild();
             return layout;

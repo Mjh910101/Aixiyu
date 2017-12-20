@@ -59,7 +59,7 @@ public class PaperToReadingView extends PaperContentView {
     private ReadingQuestion question;
 
     public PaperToReadingView(Context context, ReadingQuestion question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_reading, null);
 

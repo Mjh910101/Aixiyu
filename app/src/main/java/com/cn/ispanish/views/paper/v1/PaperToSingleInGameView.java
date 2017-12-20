@@ -62,7 +62,7 @@ public class PaperToSingleInGameView extends PaperContentView {
     AnswerAdapter answerAdapter;
 
     public PaperToSingleInGameView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_single, null);
 

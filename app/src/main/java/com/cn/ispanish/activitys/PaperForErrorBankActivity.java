@@ -15,6 +15,7 @@ import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.box.question.QuestionType;
 import com.cn.ispanish.dao.DBHandler;
 import com.cn.ispanish.download.DownloadImageLoader;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
 import com.cn.ispanish.handlers.ColorHandle;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
@@ -113,6 +114,7 @@ public class PaperForErrorBankActivity extends BaseActivity {
         progress.setVisibility(View.VISIBLE);
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("key", User.getAppKey(context));
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getType2ErrTit(context), params,
                 new RequestCallBack<String>() {

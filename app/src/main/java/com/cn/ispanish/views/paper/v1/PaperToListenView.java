@@ -70,7 +70,7 @@ public class PaperToListenView extends PaperContentView {
     private ListenQuestion question;
 
     public PaperToListenView(Context context, ListenQuestion question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
         view = inflater.inflate(R.layout.layout_paper_listen, null);
 
         view.setLayoutParams(new ViewPager.LayoutParams());

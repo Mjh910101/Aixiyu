@@ -20,6 +20,7 @@
     <color name="gray_bg_f7">#F7F7F7</color>
     <color name="black_bg_f7">#343d4e</color>
     <color name="white_smoke">#F6F6F6</color>
+    <color name="white_smoke_f5">#F5F5F5</color>
     <color name="red_text_c7">#C73A61</color>
     <color name="gray_text_56">#565656</color>
     <color name="red_bg">#D4575A</color>
@@ -110,6 +111,7 @@
     <color name="gallery_background">#ff111111</color>
     <color name="gallery_alpha">#b0000000</color>
     <color name="lighter_gray">#ffd3d3d3</color>
+    <color name="zircon">#E0E0E0</color>
     <color name="gray">#ff808080</color>
     <color name="darkgray">#ffa9a9a9</color>
     <color name="lightgray">#ffd3d3d3</color>
@@ -117,6 +119,7 @@
     <color name="dimgray">#ff696969</color>
     <color name="silver">#ffc0c0c0</color>
     <color name="red">#ffff0000</color>
+    <color name="flame">#E96024</color>
     <color name="simple_333333">#ff333333</color>
     <color name="transparent">#00000000</color>
     <color name="simple_eeeeee">#ffeeeeee</color>
@@ -320,6 +323,7 @@
     <color name="night_mode_icon">#ff747474</color>
     <color name="night_mode_icon_dark">#ff545454</color>
     <color name="blue">#ff0000ff</color>
+    <color name="united_nations_blue">#6599DD</color>
     <color name="green">#ff00ff00</color>
     <color name="detail_title_text_color">#ff999999</color>
 

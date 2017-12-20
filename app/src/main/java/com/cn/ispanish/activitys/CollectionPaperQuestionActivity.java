@@ -20,6 +20,7 @@ import com.cn.ispanish.box.question.ListenQuestion;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.box.question.ReadingQuestion;
 import com.cn.ispanish.dialog.GridDialog;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
 import com.cn.ispanish.handlers.ColorHandle;
 import com.cn.ispanish.handlers.FeelBackHandler;
 import com.cn.ispanish.handlers.JsonHandle;
@@ -414,6 +415,7 @@ public class CollectionPaperQuestionActivity extends BaseActivity {
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("key", User.getAppKey(context));
         params.addBodyParameter("kid", kid);
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getBank2CollTit(context), params,
                 new RequestCallBack<String>() {
@@ -576,7 +578,7 @@ public class CollectionPaperQuestionActivity extends BaseActivity {
     }
 
     private PaperContentView getContentView(Question question, int position) {
-        return PaperContentView.getContentView(context, question, position, onQuestion);
+        return PaperContentView.getContentView(context, question, position, onQuestion, null);
     }
 
     int tureSum = 0;

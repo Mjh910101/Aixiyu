@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.cn.ispanish.views.MaxHeightLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:mhv_HeightRatio="0.4">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_bg_f7"
+            android:scrollbars="none">
+
+            <com.cn.ispanish.views.MaxHeightLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.cn.ispanish.views.paper.v2.views.PaperTypeView
+                    android:id="@+id/paperLine_typeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.cn.ispanish.views.paper.v2.views.PaperTitleView
+                    android:id="@+id/paperLine_titleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.cn.ispanish.views.MaxHeightLayout>
+
+        </ScrollView>
+    </com.cn.ispanish.views.MaxHeightLayout>
+
+    <include layout="@layout/view_line" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.cn.ispanish.views.paper.v2.views.PaperLineView
+                android:id="@+id/paperLine_lineView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <com.cn.ispanish.views.paper.v2.views.PaperExplainView
+                android:id="@+id/paperLine_explainView"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -13,6 +13,7 @@ import com.cn.ispanish.adapters.PaperCollectionGridAdapter;
 import com.cn.ispanish.adapters.PaperGridAdapter;
 import com.cn.ispanish.box.question.Paper;
 import com.cn.ispanish.box.User;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
 import com.cn.ispanish.http.HttpUtilsBox;
@@ -102,6 +103,7 @@ public class CollectionPaperActivity extends BaseActivity {
 
         RequestParams params = HttpUtilsBox.getRequestParams(context);
         params.addBodyParameter("key", User.getAppKey(context));
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getBackCollBanksel(context), params,
                 new RequestCallBack<String>() {

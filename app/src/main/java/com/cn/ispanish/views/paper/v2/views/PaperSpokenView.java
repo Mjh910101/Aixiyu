@@ -152,7 +152,7 @@ public class PaperSpokenView extends LinearLayout {
         initViewData();
         initPlayHandler();
         setSoundBtnOnTouchListener();
-        explainView.initQuestion(question, 0);
+        explainView.initQuestion(question, 0,null);
     }
 
     private void initViewData() {

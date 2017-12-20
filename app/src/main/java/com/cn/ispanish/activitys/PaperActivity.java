@@ -1,30 +1,40 @@
 package com.cn.ispanish.activitys;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cn.ispanish.R;
 import com.cn.ispanish.adapters.PaperIndexAdapter;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
+import com.cn.ispanish.box.question.LineQuestion;
 import com.cn.ispanish.box.question.ListenQuestion;
+import com.cn.ispanish.box.question.MultiSelectQuestion;
 import com.cn.ispanish.box.question.Question;
+import com.cn.ispanish.box.question.QuestionComment;
 import com.cn.ispanish.box.question.ReadingQuestion;
 import com.cn.ispanish.box.User;
 import com.cn.ispanish.dialog.GridDialog;
 import com.cn.ispanish.dialog.InputDialog;
+import com.cn.ispanish.fragments.NewOldPaperFragment;
 import com.cn.ispanish.handlers.ColorHandle;
 import com.cn.ispanish.handlers.FeelBackHandler;
 import com.cn.ispanish.handlers.JsonHandle;
 import com.cn.ispanish.handlers.MessageHandler;
+import com.cn.ispanish.handlers.TextHandler;
 import com.cn.ispanish.http.HttpUtilsBox;
 import com.cn.ispanish.http.UrlHandle;
 import com.cn.ispanish.interfaces.CallbackForString;
@@ -97,6 +107,10 @@ public class PaperActivity extends BaseActivity {
     private GridView indexGrid;
     @ViewInject(R.id.paper_indexGridBackgroud)
     private View indexGridBackgroud;
+    @ViewInject(R.id.paper_commentsLayout)
+    private RelativeLayout commentsLayout;
+    @ViewInject(R.id.paper_commentsInput)
+    private EditText commentsInput;
 
     private boolean isCollection;
     private int nowPosition;
@@ -173,6 +187,24 @@ public class PaperActivity extends BaseActivity {
         } else {
             showIndexLayout();
         }
+    }
+
+    @OnClick({R.id.paper_commentsButton})
+    public void onComments(View view) {
+        commentsLayout.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick({R.id.paper_upladCommentsButton})
+    public void onUploadComment(View view) {
+        uploadComment();
+    }
+
+    InputMethodManager imm;
+
+    @OnClick({R.id.paper_commentsBg, R.id.paper_goneButton})
+    public void onCommentsBg(View view) {
+        commentsLayout.setVisibility(View.GONE);
+        closeInput();
     }
 
     @OnClick({R.id.paper_indexGridBackgroud})
@@ -303,6 +335,7 @@ public class PaperActivity extends BaseActivity {
         params.addBodyParameter("key", User.getAppKey(context));
         params.addBodyParameter("kid", kid);
         params.addBodyParameter("tid", question.getId());
+        params.addBodyParameter("lan", NewOldPaperFragment.getLan());
         params.addBodyParameter("iscoll", String.valueOf(isColl));
 
         HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getTitColl(context), params,
@@ -445,10 +478,15 @@ public class PaperActivity extends BaseActivity {
 
         List<ReadingQuestion> readingQuestionList = new ArrayList<>();
         List<ListenQuestion> listenQuestionList = new ArrayList<>();
+        List<MultiSelectQuestion> msQuestionList = new ArrayList<>();
 
         for (int i = 0; i < array.length(); i++) {
             Question q = new Question(JsonHandle.getJSON(array, i));
             switch (q.getType()) {
+                case Question.LinaXian:
+                    LineQuestion lq = new LineQuestion(JsonHandle.getJSON(array, i));
+                    questionLiat.add(lq);
+                    break;
                 case Question.YueDu:
                 case Question.WanXingTianKong:
                 case Question.TianKong:
@@ -468,6 +506,26 @@ public class PaperActivity extends BaseActivity {
                             ReadingQuestion readingQuestion = new ReadingQuestion(q);
                             readingQuestionList.add(readingQuestion);
                             questionLiat.add(readingQuestion);
+                        }
+                    }
+                    break;
+                case Question.DuoXuan_ZuHe:
+                    if (msQuestionList.isEmpty()) {
+                        MultiSelectQuestion msQuestion = new MultiSelectQuestion(q);
+                        msQuestionList.add(msQuestion);
+                        questionLiat.add(msQuestion);
+                    } else {
+                        boolean isHave = false;
+                        for (MultiSelectQuestion msQuestion : msQuestionList) {
+                            if (msQuestion.equals(q)) {
+                                msQuestion.addQuestion(q);
+                                isHave = true;
+                            }
+                        }
+                        if (!isHave) {
+                            MultiSelectQuestion msQuestion = new MultiSelectQuestion(q);
+                            msQuestionList.add(msQuestion);
+                            questionLiat.add(msQuestion);
                         }
                     }
                     break;
@@ -494,6 +552,7 @@ public class PaperActivity extends BaseActivity {
                         }
                     }
                     break;
+
                 default:
                     questionLiat.add(q);
                     break;
@@ -573,7 +632,7 @@ public class PaperActivity extends BaseActivity {
     }
 
     private PaperContentView getContentView(Question question, int position) {
-        return PaperContentView.getContentView(context, question, position, onQuestion);
+        return PaperContentView.getContentView(context, question, position, onQuestion, callbackForComment);
     }
 
     int tureSum = 0;
@@ -602,6 +661,35 @@ public class PaperActivity extends BaseActivity {
         }
     };
 
+    QuestionComment commentObj;
+
+    QuestionCommentAdapter.CallbackForComment callbackForComment = new QuestionCommentAdapter.CallbackForComment() {
+
+        @Override
+        public void callback(QuestionComment comment) {
+            commentObj = comment;
+            commentsLayout.setVisibility(View.VISIBLE);
+            commentsInput.setText("");
+            commentsInput.setHint("回复" + comment.getUsername());
+        }
+    };
+
+    public void closeInput() {
+
+        commentObj = null;
+        commentsInput.setText("");
+        commentsInput.setHint("");
+
+        if (imm == null) {
+            imm = (InputMethodManager) commentsInput.getContext().getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
+        }
+        if (imm.isActive()) {
+            imm.hideSoftInputFromWindow(
+                    commentsInput.getApplicationWindowToken(), 0);
+        }
+    }
+
     private void saveErrorQuestion(Question q) {
         try {
             if (q instanceof Question) {
@@ -611,4 +699,63 @@ public class PaperActivity extends BaseActivity {
 
         }
     }
+
+
+    private void uploadComment() {
+        Question question = questionLiat.get(nowPosition);
+        if (question == null) {
+            return;
+        }
+
+        progress.setVisibility(View.VISIBLE);
+
+        RequestParams params = HttpUtilsBox.getRequestParams(context);
+        params.addBodyParameter("key", User.getAppKey(context));
+        params.addBodyParameter("tid", question.getId());
+        params.addBodyParameter("kid", kid);
+        params.addBodyParameter("conten", TextHandler.getText(commentsInput));
+        params.addBodyParameter("fid", getFid());
+
+        HttpUtilsBox.getHttpUtil().send(HttpRequest.HttpMethod.POST, UrlHandle.getSaveBankComment(context), params,
+                new RequestCallBack<String>() {
+
+                    @Override
+                    public void onFailure(HttpException exception,
+                                          String msg) {
+                        progress.setVisibility(View.GONE);
+                        MessageHandler.showFailure(context);
+                    }
+
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        String result = responseInfo.result;
+                        Log.d("", result);
+
+                        progress.setVisibility(View.GONE);
+
+                        JSONObject json = JsonHandle.getJSON(JsonHandle.getJSON(result), "result");
+                        if (json != null) {
+                            if (JsonHandle.getInt(json, "code") == 1) {
+                                closeInput();
+                                uoloadCommentsList();
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void uoloadCommentsList() {
+        PaperContentView view = questionViewLiat.get(nowPosition);
+        if(view!=null){
+            view.onUploadComment();
+        }
+    }
+
+    public String getFid() {
+        if (commentObj != null) {
+            return commentObj.getId();
+        }
+        return "";
+    }
+
 }

@@ -485,22 +485,22 @@ public class GamePaperActivity extends BaseActivity {
         position = position + 1;
         switch (question.getType()) {
             case Question.WanXingTianKong:
-                PaperToClozeLayout clozeLayout = new PaperToClozeLayout(context, (ReadingQuestion) question, position, onQuestion);
+                PaperToClozeLayout clozeLayout = new PaperToClozeLayout(context, (ReadingQuestion) question, position, onQuestion,null);
                 clozeLayout.setGame(true);
                 return clozeLayout;
             case Question.YueDu:
-                PaperToReadingLayout readingLayout = new PaperToReadingLayout(context, (ReadingQuestion) question, position, onQuestion);
+                PaperToReadingLayout readingLayout = new PaperToReadingLayout(context, (ReadingQuestion) question, position, onQuestion,null);
                 readingLayout.setGame(true);
                 return readingLayout;
             case Question.TingLi:
             case Question.TingLi_DATI:
             case Question.TingLi_XUANZHE:
             case Question.TingLi_PANDUAN:
-                PaperToListenLayout listenLayout = new PaperToListenLayout(context, (ListenQuestion) question, position, onQuestion);
+                PaperToListenLayout listenLayout = new PaperToListenLayout(context, (ListenQuestion) question, position, onQuestion,null);
                 listenLayout.setGame(true);
                 return listenLayout;
             default:
-                PaperToRadioLayout radioLayout = new PaperToRadioLayout(context, question, position, onQuestion);
+                PaperToRadioLayout radioLayout = new PaperToRadioLayout(context, question, position, onQuestion,null);
                 radioLayout.setGame(true);
                 return radioLayout;
         }

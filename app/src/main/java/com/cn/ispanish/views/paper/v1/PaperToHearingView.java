@@ -65,7 +65,7 @@ public class PaperToHearingView extends PaperContentView {
 //    private boolean isPlay = false;
 
     public PaperToHearingView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_hearing, null);
 

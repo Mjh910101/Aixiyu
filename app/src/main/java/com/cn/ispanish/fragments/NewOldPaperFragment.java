@@ -102,7 +102,15 @@ public class NewOldPaperFragment extends BaseFragment {
     private TextView orderPaperButton;
 
     PaperTitle nowType;
-    PaperTitle nowTitle;
+    public static PaperTitle nowTitle = null;
+
+    public static String getLan() {
+        if (nowTitle == null) {
+            return "";
+        }
+
+        return nowTitle.getId();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

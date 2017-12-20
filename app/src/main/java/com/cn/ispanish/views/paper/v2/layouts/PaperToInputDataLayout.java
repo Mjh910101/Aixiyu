@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.interfaces.CallbackForBoolean;
 import com.cn.ispanish.interfaces.OnQuestionListener;
@@ -47,8 +48,8 @@ public class PaperToInputDataLayout extends PaperContentView {
     @ViewInject(R.id.paperinputData_explainView)
     private PaperExplainView explainView;
 
-    public PaperToInputDataLayout(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToInputDataLayout(Context context, Question question, int position, OnQuestionListener onQuestion, QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion, callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_input_data, null);
 
@@ -63,7 +64,7 @@ public class PaperToInputDataLayout extends PaperContentView {
     public void initViewData() {
         typeView.initQuestion(question.getQuestionType(), position);
         titleView.initQuestion(question, position);
-        explainView.initQuestion(question, position);
+        explainView.initQuestion(question, position, callbackForComment);
         inputView.initQuestion(question);
         inputView.setVisibility(VISIBLE);
         inputView.setOnCheckListener(new CallbackForBoolean() {

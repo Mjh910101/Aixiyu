@@ -79,4 +79,10 @@
         <attr name="mhv_HeightDimen" format="reference|dimension" />
     </declare-styleable>
 
+    <declare-styleable name="paper_line">
+        <attr name="titleText" format="string" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="titleTextSize" format="reference|dimension" />
+    </declare-styleable>
+
 </resources>

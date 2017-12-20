@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 
 import com.cn.ispanish.R;
+import com.cn.ispanish.adapters.QuestionCommentAdapter;
 import com.cn.ispanish.box.question.Question;
 import com.cn.ispanish.interfaces.CallbackForBoolean;
 import com.cn.ispanish.interfaces.OnQuestionListener;
@@ -49,8 +50,8 @@ public class PaperToJudgmentLayout extends PaperContentView {
     @ViewInject(R.id.paperJudgemt_explainView)
     private PaperExplainView explainView;
 
-    public PaperToJudgmentLayout(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+    public PaperToJudgmentLayout(Context context, Question question, int position, OnQuestionListener onQuestion, QuestionCommentAdapter.CallbackForComment callbackForComment) {
+        super(context, question, position, onQuestion, callbackForComment);
 
         view = inflater.inflate(R.layout.layout_paper_to_judgment, null);
 
@@ -65,7 +66,7 @@ public class PaperToJudgmentLayout extends PaperContentView {
     public void initViewData() {
         typeView.initQuestion(question.getQuestionType(), position);
         titleView.initQuestion(question, position);
-        explainView.initQuestion(question, position);
+        explainView.initQuestion(question, position, callbackForComment);
         judgmentView.initQuestion(question);
         judgmentView.setOnQuestion(new OnQuestionListener() {
             @Override

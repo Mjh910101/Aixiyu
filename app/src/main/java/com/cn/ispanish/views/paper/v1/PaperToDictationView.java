@@ -65,7 +65,7 @@ public class PaperToDictationView extends PaperContentView {
 //    private boolean isPlay = false;
 
     public PaperToDictationView(Context context, Question question, int position, OnQuestionListener onQuestion) {
-        super(context, question, position, onQuestion);
+        super(context, question, position, onQuestion,null);
 
         view = inflater.inflate(R.layout.layout_paper_dictation, null);
 
